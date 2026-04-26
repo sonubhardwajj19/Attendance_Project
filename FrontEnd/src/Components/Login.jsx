@@ -9,21 +9,99 @@ export function Login () {
     const navigate = useNavigate();
 
     return <>
-        <div style={{display: "grid" , justifyContent: "center"}}>
-            <div id="container"  >
-                <h1>Log In </h1>
-                <div><input id="name" type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
-                <div><input id="password" type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
-                <button onClick={ async () => {
-                    const response = await axios.post("http://localhost:4000/signin" ,{
-                        name : userName ,
-                        password : password
-                    })
-                    localStorage.setItem("token", response.data.token);
-                    navigate('/DashBoard')
-                 }}>
-                    Log In</button>
+      <div className="min-h-screen bg-black bg-[linear-gradient(rgba(128,128,128,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(128,128,128,0.15)_1px,transparent_1px)] bg-[size:80px_80px]">
+
+            <div className="sticky top-0 z-50  backdrop-blur-[4000px]">
+                <nav className="bg-black/35 text-white  " >
+                <div className="flex justify-between p-3 mr-20">
+                        <div className="h-12 mt-1 hover:cursor-pointer  mx-auto">       
+                            <svg width="200" height="67" viewBox="0 40 500 200" xmlns="http://www.w3.org/2000/svg">
+
+                            <defs>
+                                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stopColor="#4f46e5"/>
+                                <stop offset="100%" stopColor="#22c55e"/>
+                                </linearGradient>
+                            </defs>
+
+                            <circle cx="80" cy="90" r="40" stroke="url(#grad)" strokeWidth="6" />
+                            <text x="80" y="102" textAnchor="middle"
+                                    fontSize="32" fontWeight="bold"
+                                    fill="url(#grad)" fontFamily="Arial">
+                                A
+                            </text>
+                            <text x="140" y="100"
+                                    fontSize="64"
+                                    fontWeight="bold"
+                                    fill="url(#grad)"
+                                    fontFamily="cursive"
+                                    letterSpacing="2">
+                                ATTENDLE
+                            </text>
+                            <text x="145" y="145"
+                                    fontSize="20"
+                                    fill="#94a3b8"
+                                    fontFamily="cursive"
+                                    letterSpacing="2">
+                                SMART ATTENDANCE SYSTEM
+                            </text>
+
+                            </svg>
+                        </div>
+                    </div>
+                </nav>
             </div>
-        </div>
+
+
+
+
+            <div className="mt-30 border border-2 border-yellow-950 p-5 rounded-xl mx-auto w-170 bg-zinc-900">
+                <div>
+                    <h1 className="text-gray-200 text-4xl font-bold text-center"> Sign in</h1>
+                    <div className=" mt-10 border border-2 border-yellow-950  p-5 rounded-xl hover:bg-stone-800"><input id="name"   className="text-white"  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
+                    <div className=" mt-10 border border-2 border-yellow-950  p-5 rounded-xl hover:bg-stone-800"><input id="password"  className="text-white" type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
+                    <div className=" mt-10 border border-2 border-yellow-950  p-3 rounded-xl w-40 mx-auto text-gray-200 text-center font-semibold text-xl hover:bg-stone-800">
+                    <button  onClick={ async () => {
+                        const response = await axios.post("http://localhost:4000/signin" ,{
+                            name : userName ,
+                            password : password
+                        })
+                        localStorage.setItem("token", response.data.token);
+                        navigate('/DashBoard')
+                    }}
+                     >
+                        Login</button>
+                  </div>
+                </div>
+            </div>
+
+
+            
+
+
+
+            <div id="footer" className="h-150 w-full bg-black border-y-2 border-stone-900 flex flex-col mt-60">
+                <div className="flex ml-50 mt-10 gap-60">
+                <div>
+                <h2 className="text-yellow-900 text-[40px] font-semibold">Attendle</h2>
+                <div> <p className="font-semibold text-gray-400">© 2026 Attendle. All rights reserved.</p></div>
+                </div>
+                <div className="mt-1">
+                <div> <a href="policies" className="font-semibold text-gray-400 hover:text-white">Privacy Policy</a></div>
+                <div> <a href="terms&conditions" className="font-semibold text-gray-400 hover:text-white">Terms & Conditions</a></div>  
+                </div>
+                <div className=" mt-1"> 
+                <p className="font-semibold text-gray-400 hover:text-white">Drop your queries at</p>
+                <p className="font-semibold text-gray-400 hover:text-white">zsb1926@gmail.com</p>
+                </div>
+            </div>
+
+            <div className="mt-auto">
+                <h1 className=" bg-gradient-to-b from-white to-black bg-clip-text text-transparent text-[300px] font-bold ">ATTENDLE</h1>
+            </div>
+            </div>
+
+
+       </div>
     </>
 }
