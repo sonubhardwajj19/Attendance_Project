@@ -164,8 +164,10 @@ export function LandingPage () {
                 whileInView={{ opacity:1, scale:1 }}
                 transition={{ duration:.8 }}
                 viewport={{ once:false }}
-                className="mr-20 h-100 w-120 ml-auto border-2 border-white  rounded-3xl mt-30 text-3xl"
+                className="mr-20 h-100 w-120 ml-auto  mt-30 text-3xl bg-black"
                 >
+         
+                <img src="/src/assets/sig.png" alt="Sorry error occurred"  className="h-full w-full object-fit  rounded-xl p-1"/>
             </motion.div>
         </div>
 
