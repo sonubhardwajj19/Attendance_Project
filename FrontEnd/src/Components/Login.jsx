@@ -58,8 +58,8 @@ export function Login () {
             <div className="mt-30 border border-2 border-yellow-950 p-5 rounded-xl mx-auto w-170 bg-zinc-900">
                 <div>
                     <h1 className="text-gray-200 text-4xl font-bold text-center"> Sign in</h1>
-                    <div className=" mt-10 border border-2 border-yellow-950  p-5 rounded-xl hover:bg-stone-800"><input id="name"   className="text-white"  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
-                    <div className=" mt-10 border border-2 border-yellow-950  p-5 rounded-xl hover:bg-stone-800"><input id="password"  className="text-white" type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
+                    <div className=" mt-10 border border-2 border-yellow-950  p-5 rounded-xl hover:bg-stone-800"><input id="name"   className="text-white bg-transparent border-none outline-none"  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
+                    <div className=" mt-10 border border-2 border-yellow-950  p-5 rounded-xl hover:bg-stone-800"><input id="password"  className="text-white bg-transparent border-none outline-none" type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
                     <div className=" mt-10 border border-2 border-yellow-950  p-3 rounded-xl w-40 mx-auto text-gray-200 text-center font-semibold text-xl hover:bg-stone-800">
                     <button  onClick={ async () => {
                         const response = await axios.post("http://localhost:4000/signin" ,{
