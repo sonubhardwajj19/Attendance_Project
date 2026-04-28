@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 export function LandingPage () {
   const navigate = useNavigate();
     return <>
-    <div className="bg-black bg-[linear-gradient(rgba(128,128,128,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(128,128,128,0.15)_1px,transparent_1px)] bg-[size:80px_80px]">
-       <div className="sticky top-0 z-50  backdrop-blur-[4000px]">
-          <nav className="bg-black/35 text-white  " >
-           <div className="flex justify-between p-3 ml-10 mr-20">
+    <div className="bg-black flex flex-col bg-[linear-gradient(rgba(128,128,128,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(128,128,128,0.15)_1px,transparent_1px)] bg-[size:80px_80px]">
+       
+
+          <nav className="bg-black/35  text-white   fixed w-full top-0 z-50  backdrop-blur-[5000px] " >
+           <div className="flex justify-between p-3 ml-10 mr-20 ">
 
               <div className="h-12 mt-1 hover:cursor-pointer">       
                  <svg width="200" height="67" viewBox="0 40 500 200" xmlns="http://www.w3.org/2000/svg">
@@ -63,10 +64,13 @@ export function LandingPage () {
              </div>
             </div>
           </nav>
-       </div>
+       
 
 
-       <div className="mt-30">
+
+    <main className="pt-30 flex-1">
+
+       <div>
           <h1 className="text-white  text-7xl font-bold  text-center font-mono mt-10 tracking-tighter ">Attendance made <br/>simple & effortless.</h1>
           <p className="text-gray-400 font-mono text-center text-xl font-bold tracking-tight mt-15">Designed to save time , simplify attendance <br />management and monitor everything in one smooth and reliable experience.
           </p>
@@ -287,6 +291,10 @@ export function LandingPage () {
               </div>
             </motion.div>
         </div>
+
+
+        </main>
+
 
 
       <div id="footer" className="h-150 w-full bg-black border-y-2 border-stone-900 flex flex-col mt-60">

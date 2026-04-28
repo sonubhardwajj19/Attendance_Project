@@ -9,53 +9,68 @@ export function Login () {
     const navigate = useNavigate();
 
     return <>
-      <div className="min-h-screen bg-black bg-[linear-gradient(rgba(128,128,128,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(128,128,128,0.15)_1px,transparent_1px)] bg-[size:80px_80px]">
+      <div className="flex flex-col bg-black bg-[linear-gradient(rgba(128,128,128,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(128,128,128,0.15)_1px,transparent_1px)] bg-[size:80px_80px]">
 
-            <div className="sticky top-0 z-50  backdrop-blur-[4000px]">
-                <nav className="bg-black/35 text-white  " >
-                <div className="flex justify-between p-3 mr-20">
-                        <div className="h-12 mt-1 hover:cursor-pointer  mx-auto">       
-                            <svg width="200" height="67" viewBox="0 40 500 200" xmlns="http://www.w3.org/2000/svg">
+        
+              
+      <nav className="bg-black/35  text-white   fixed w-full top-0 z-50  backdrop-blur-[5000px] " >
+           <div className="flex justify-between p-3 ml-10 mr-20 ">
 
-                            <defs>
-                                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stopColor="#4f46e5"/>
-                                <stop offset="100%" stopColor="#22c55e"/>
-                                </linearGradient>
-                            </defs>
+              <div className="h-12 mt-1 hover:cursor-pointer">       
+                 <svg width="200" height="67" viewBox="0 40 500 200" xmlns="http://www.w3.org/2000/svg">
 
-                            <circle cx="80" cy="90" r="40" stroke="url(#grad)" strokeWidth="6" />
-                            <text x="80" y="102" textAnchor="middle"
-                                    fontSize="32" fontWeight="bold"
-                                    fill="url(#grad)" fontFamily="Arial">
-                                A
-                            </text>
-                            <text x="140" y="100"
-                                    fontSize="64"
-                                    fontWeight="bold"
-                                    fill="url(#grad)"
-                                    fontFamily="cursive"
-                                    letterSpacing="2">
-                                ATTENDLE
-                            </text>
-                            <text x="145" y="145"
-                                    fontSize="20"
-                                    fill="#94a3b8"
-                                    fontFamily="cursive"
-                                    letterSpacing="2">
-                                SMART ATTENDANCE SYSTEM
-                            </text>
+                  <defs>
+                    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#4f46e5"/>
+                      <stop offset="100%" stopColor="#22c55e"/>
+                    </linearGradient>
+                  </defs>
 
-                            </svg>
-                        </div>
-                    </div>
-                </nav>
+                  <circle cx="80" cy="90" r="40" stroke="url(#grad)" strokeWidth="6" />
+                  <text x="80" y="102" textAnchor="middle"
+                        fontSize="32" fontWeight="bold"
+                        fill="url(#grad)" fontFamily="Arial">
+                    A
+                  </text>
+                  <text x="140" y="100"
+                        fontSize="64"
+                        fontWeight="bold"
+                        fill="url(#grad)"
+                        fontFamily="cursive"
+                        letterSpacing="2">
+                    ATTENDLE
+                  </text>
+                  <text x="145" y="145"
+                        fontSize="20"
+                        fill="#94a3b8"
+                        fontFamily="cursive"
+                        letterSpacing="2">
+                    SMART ATTENDANCE SYSTEM
+                    </text>
+                  </svg>
+              </div>
+
+              <div className="flex gap-20 p-3">
+                <a href="#features" className="font-semibold text-gray-400 hover:text-white">Features</a>
+                <a href="#works" className="font-semibold text-gray-400 hover:text-white">How it works ?</a>
+                <a href="#footer" className="font-semibold text-gray-400 hover:text-white">Contact</a>
+              </div>
+
+             <div className="flex gap-1 p-3">
+                <div  className="border  border-1 rounded-xl h-7 w-17  pl-1 font-semibold bg-white text-black hover:bg-gray-400">
+                  <button onClick={() => {
+                    navigate("/signup");
+                   }}>Sign Up  </button>
+                </div>
+             </div>
             </div>
+          </nav>
 
 
 
 
-            <div className="mt-30 border border-2 border-yellow-950 p-5 rounded-xl mx-auto w-170 bg-zinc-900">
+         <main className="flex flex-2 pt-40">
+            <div className="border border-2 border-yellow-950 p-5 rounded-xl mx-auto w-170 bg-zinc-900">
                 <div>
                     <h1 className="text-gray-200 text-4xl font-bold text-center"> Sign in</h1>
                     <div className=" mt-10 border border-2 border-yellow-950  p-5 rounded-xl hover:bg-stone-800"><input id="name"   className="text-white bg-transparent border-none outline-none"  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
@@ -74,7 +89,7 @@ export function Login () {
                   </div>
                 </div>
             </div>
-
+         </main>
 
             
 
