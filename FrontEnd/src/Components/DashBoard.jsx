@@ -29,162 +29,9 @@ export function DashBoard () {
   
 
     return <>
-            
+               
 
-
-            {/* <div>
-               <button onClick={async ()=> {
-                  setshowDiv(true)
-                  const response = await axios.get("http://localhost:4000/subject" ,
-                     { headers : {
-                        token : localStorage.getItem("token")
-                     }}
-                  )
-                  setshowsub(response.data.subjects)
-                  console.log(response.data.subjects)
-            
-               }}>Show records</button>
-                 { showDiv && (
-                  <>
-                   { showsub.map((m,index) => (
-                     <>
-                        <div className="flex gap-10">
-                           <div>{index + 1}</div>
-                           <div>{m.name}</div>
-                        </div>
-                     </>
-                   ))}
-                  </>
-                 )}
-            </div> */}
-            
-         <div className="flex gap-10">
-
-                  {/* Create subjects with create button */}
-             <div className="flex gap-5">
-                  <div className="flex gap-10">
-                     <button onClick={()=> {
-                        setshowInput(true)
-                     }}
-                     className="bg-gray-400">Add new subject</button>  
-                  </div>
-
-               { showInput && (
-                  <>
-                  <div>
-                     <input type="text" placeholder="Enter the name of subject"  onChange={(e) => setcreateSubject(e.target.value)} className="bg-gray-400"/>
-                  </div>
-                  <div>
-                     <button onClick={ async () => {
-                           await axios.post("http://localhost:4000/subject" , 
-                           { subjectName : createSubject} ,
-                           { headers : {
-                              token : localStorage.getItem("token")
-                           }}
-                        )
-
-                     }} >Create subject</button> 
-                  </div>
-                  <div>
-                     <button onClick={()=> {
-                     setshowInput(false)
-                  }}
-                  className="bg-gray-400">Go back</button>
-                  </div>      
-                  </>
-               )}
-            </div>
-
-      
-
-
-
-
-                  {/* Existing subjects with refresh button */}
-
-                  <div  className="flex gap-5">
-                     <div >
-                        {showsub.map((m,index) => (
-                           <>
-                           <div className="flex gap-5">
-                              <div>{index + 1}</div>
-                              <div>{m.name}</div>
-                           </div>
-                           </>
-                        ))}
-                     </div>
-                     
-                  <div >
-                     <button onClick={async() => {
-                        const res =  await axios.get("http://localhost:4000/subject" , 
-                           { headers : {
-                              token : localStorage.getItem("token")
-                           }}
-                        )
-                     setshowsub(res.data.subjects)
-                     }}>Refresh</button>
-                  </div>
-                  </div>
- 
-
-
-            {/* Delete */}
-
-               <div>
-                  <button onClick={ async () => {
-                     const res =  await axios.get("http://localhost:4000/subject" , 
-                        { headers : {
-                           token : localStorage.getItem("token")
-                        }}
-                     )
-                     setshowdelSub(res.data.subjects)
-                     setshowDel(true)
-                  } }  className="bg-gray-500">
-                  Remove a subject
-                  </button>
-
-                  {showDel && (  
-                     showdelSub.map(m => (
-                        <>
-                        <div className="flex gap-5">
-                        <div key={m.Id}>{m.name}</div>
-                        <div><button onClick={ async () => {
-                              const res = await axios.delete("http://localhost:4000/subject" , 
-                                 { headers : {
-                                    token : localStorage.getItem("token")
-                                 },
-                                 data : {
-                                    subjectId : m.Id
-                                 }
-                        })
-
-                        setshowdelSub(n => n.filter(subjects => subjects.Id !== m.Id))
-
-                        }} className="bg-gray-400">Delete</button></div>
-                        </div>
-                        </>
-                     ))
-                  )}
-                  </div>
-               </div>
-
-
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-            
-
-       <div className="bg-black flex flex-col bg-[linear-gradient(rgba(128,128,128,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(128,128,128,0.15)_1px,transparent_1px)] bg-[size:80px_80px]">
+       <div className="bg-black min-h-screen flex flex-col bg-[linear-gradient(rgba(128,128,128,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(128,128,128,0.15)_1px,transparent_1px)] bg-[size:80px_80px]">
            
 
           <nav className="bg-black/35  text-white   fixed w-full top-0 z-50  backdrop-blur-[5000px] " >
@@ -237,16 +84,56 @@ export function DashBoard () {
 
 
 
-            <div className="flex flex-2">
+      <div className="flex flex-1 pt-20">
 
-            <div className="w-40 bg-zinc-900"> helllooo</div>
+         <div className="pt-4 w-120 bg-gray-950 border-r-2 border-t-2 border-gray-500 rounded-t-lg items-center">
+            <div className="w-full h-12 text-center text-yellow-700 border-b-1 border-gray-700 rounded-xl text-xl font-semibold flex justify-between">
+               <span className="ml-7">Existing subjects</span>
+                  <button onClick={async() => {
+                        const res =  await axios.get("http://localhost:4000/subject" , 
+                                 { headers : {
+                                    token : localStorage.getItem("token")
+                                 }}
+                              )
+                           setshowsub(res.data.subjects)
+                           }}
+                           className=" bg-gray-900 text-gray-300 h-8 w-22 text-lg border border-yellow-900 border-1 rounded-3xl hover:cursor-pointer hover:bg-stone-900 hover:text-white mr-3">Refresh
+                  </button>
+            </div>
 
-            </div> 
+            <div  className="flex mt-2">
+               <div className="flex flex-col gap-5">
+                  {showsub.map((m,index) => (
+                     <>
+                     <div className="flex h-20 w-100">
+                        <div className="flex p-2">
+                            <div className="bg-zinc-700 text-black font-semibold h-15 w-15 ml-5 p-4 text-xl border border-yellow-900 border-l-1 border-t-1 border-b-1 text-center rounded-l-lg">{index + 1}</div>
+                            <div onClick={()=>{
+                              alert("Hello")
+                            }} className="bg-gray-900 text-gray-400 h-15 w-80 p-4 text-xl border border-yellow-900 border-1 rounded-r-4xl hover:cursor-pointer  hover:bg-stone-900 hover:text-white">{m.name}</div>
+                        </div>
+                     </div>
+                     </>
+                  ))}
+               </div>
+            </div>
 
+         </div>
+
+
+
+
+
+
+         <div className="flex-1 bg-gray-900/80">
+             
+         </div>   
+      </div>
+          
 
             
 
-             <div id="footer" className="h-150 w-full bg-black border-y-2 border-stone-900 flex flex-col mt-60">
+             <div id="footer" className="h-150 w-full bg-black border-y-2 border-stone-900 flex flex-col ">
                      <div className="flex ml-50 mt-10 gap-60">
                   <div>
                      <h2 className="text-yellow-900 text-[40px] font-semibold">Attendle</h2>
