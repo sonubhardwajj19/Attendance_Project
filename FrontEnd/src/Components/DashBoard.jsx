@@ -34,7 +34,7 @@ export function DashBoard () {
        <div className="bg-black min-h-screen flex flex-col bg-[linear-gradient(rgba(128,128,128,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(128,128,128,0.15)_1px,transparent_1px)] bg-[size:80px_80px]">
            
 
-          <nav className="bg-black/35  text-white   fixed w-full top-0 z-50  backdrop-blur-[5000px] " >
+          <nav className="bg-black  text-white   fixed w-full top-0 z-50  backdrop-blur-[5000px] " >
            <div className="flex justify-between p-3 ml-10 mr-20 ">
 
               <div className="h-12 mt-1 hover:cursor-pointer">       
