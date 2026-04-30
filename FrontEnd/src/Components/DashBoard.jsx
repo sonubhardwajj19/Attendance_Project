@@ -2,6 +2,7 @@ import { div, input } from "framer-motion/client";
 import { useNavigate } from "react-router-dom"
 import {useEffect, useState} from "react"
 import axios from "axios";
+import { motion } from "framer-motion";
 
 
 export function DashBoard () {
@@ -27,7 +28,6 @@ export function DashBoard () {
   },[])
 
   
-
     return <>
                
 
@@ -124,10 +124,35 @@ export function DashBoard () {
 
 
 
-
-         <div className="flex-1 bg-gray-900/80">
-             
+      <div className="mx-auto">
+         <div>
+               <div className="p-10">
+                  <button onClick={ async () => {
+                        setshowInput(true)
+                        const response = await axios.post("http://localhost:4000/subject" , 
+                           { headers : {
+                              token : localStorage.getItem("token")
+                           }},
+                           { data : {
+                              subjectName:showInput
+                           }}
+                        )
+                  }}
+                  className=" bg-gray-400/40 h-18 w-100 rounded-2xl text-gray-300 text-3xl font-semibold border border-2 border-gray-400 hover:bg-stone-600 hover:shadow-xs hover:shadow-white hover:scale-101 hover:white">Add a new subject
+                  </button>
+               </div>  
          </div>   
+
+                   
+               </div>
+               <motion.div className="bg-white/50 h-100 w-200">
+                  {setshowInput && (
+                     <>
+                     <button className="bg-white h-10">Add subject</button>
+                     </>
+                  )}  
+               </motion.div>
+
       </div>
           
 
@@ -148,6 +173,8 @@ export function DashBoard () {
                      <p className="font-semibold text-gray-400 hover:text-white">zsb1926@gmail.com</p>
                   </div>
                </div>
+
+
 
                <div className="mt-auto">
                   <h1 className=" bg-gradient-to-b from-white to-black bg-clip-text text-transparent text-[300px] font-bold ">ATTENDLE</h1>
