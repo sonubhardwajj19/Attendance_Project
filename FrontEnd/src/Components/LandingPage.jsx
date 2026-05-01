@@ -74,7 +74,7 @@ export function LandingPage () {
           <h1 className="text-white  text-7xl font-bold  text-center font-mono mt-10 tracking-tighter ">Attendance made <br/>simple & effortless.</h1>
           <p className="text-gray-400 font-mono text-center text-xl font-bold tracking-tight mt-15">Designed to save time , simplify attendance <br />management and monitor everything in one smooth and reliable experience.
           </p>
-          <div className="mx-auto  rounded-xl h-8 w-25  pl-5  mt-40 font-bold bg-white text-black hover:bg-gray-400  border"> 
+          <div className="mx-auto  rounded-xl h-10 w-25  pl-4 pt-1.5  mt-30 font-bold bg-white text-black hover:bg-gray-400  border"> 
               <button onClick={() => {
               navigate("/Signup");
                 }}>Try now</button>

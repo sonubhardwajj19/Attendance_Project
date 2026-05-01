@@ -12,7 +12,10 @@ export function DashBoard () {
   const [showDel , setshowDel] = useState(false);
   const [showsub , setshowsub] = useState([]);
   const [showdelSub , setshowdelSub] = useState([]);
-
+  const [showsuccess , setshowsuccess] = useState(false);
+  const [successmsg, setSuccessmsg] = useState([]);
+  
+  
   useEffect(()=> {
      async function getSubjects() {
       const res =  await axios.get("http://localhost:4000/subject" ,
@@ -86,75 +89,117 @@ export function DashBoard () {
 
       <div className="flex flex-1 pt-20">
 
-         <div className="pt-4 w-120 bg-gray-950 border-r-2 border-t-2 border-gray-500 rounded-t-lg items-center">
-            <div className="w-full h-12 text-center text-yellow-700 border-b-1 border-gray-700 rounded-xl text-xl font-semibold flex justify-between">
-               <span className="ml-7">Existing subjects</span>
-                  <button onClick={async() => {
-                        const res =  await axios.get("http://localhost:4000/subject" , 
-                                 { headers : {
-                                    token : localStorage.getItem("token")
-                                 }}
-                              )
-                           setshowsub(res.data.subjects)
-                           }}
-                           className=" bg-gray-900 text-gray-300 h-8 w-22 text-lg border border-yellow-900 border-1 rounded-3xl hover:cursor-pointer hover:bg-stone-900 hover:text-white mr-3">Refresh
-                  </button>
-            </div>
+            <div className="pt-4 w-120 bg-gray-950 border-r-2 border-t-2 border-gray-500 rounded-t-lg items-center ">
+               <div className="w-full h-12 text-center text-yellow-700 border-b-1 border-gray-700 rounded-xl text-xl font-semibold flex justify-between">
+                  <span className="ml-7">Existing subjects</span>
+                     <button onClick={async() => {
+                           setshowsuccess(false)
+                           setSuccessmsg([])
+                           const res =  await axios.get("http://localhost:4000/subject" , 
+                                    { headers : {
+                                       token : localStorage.getItem("token")
+                                    }}
+                                 )
+                              setshowsub(res.data.subjects)
+                              }}
+                              className=" bg-gray-900 text-gray-300 h-8 w-22 text-lg border border-yellow-900 border-1 rounded-3xl hover:cursor-pointer hover:bg-stone-900 hover:text-white mr-3">Refresh
+                     </button>
+               </div>
 
-            <div  className="flex mt-2">
-               <div className="flex flex-col gap-5">
-                  {showsub.map((m,index) => (
-                     <>
-                     <div className="flex h-20 w-100">
-                        <div className="flex p-2">
-                            <div className="bg-zinc-700 text-black font-semibold h-15 w-15 ml-5 p-4 text-xl border border-yellow-900 border-l-1 border-t-1 border-b-1 text-center rounded-l-lg">{index + 1}</div>
-                            <div onClick={()=>{
-                              alert("Hello")
-                            }} className="bg-gray-900 text-gray-400 h-15 w-80 p-4 text-xl border border-yellow-900 border-1 rounded-r-4xl hover:cursor-pointer  hover:bg-stone-900 hover:text-white">{m.name}</div>
+               <div  className="flex mt-2 ">
+                  <div className="flex flex-col gap-5">
+                     {showsub.map((m,index) => (
+                        <>
+                        <div className="flex h-20 w-100">
+                           <div className="flex p-2">
+                              <div className="bg-zinc-700 text-black font-semibold h-15 w-15 ml-5 p-4 text-xl border border-yellow-900 border-l-1 border-t-1 border-b-1 text-center rounded-l-lg">{index + 1}</div>
+                              <div onClick={()=>{
+                                 alert("Hello")
+                              }} className="bg-gray-900 text-gray-400 h-15 w-80 p-4 text-xl border border-yellow-900 border-1 rounded-r-4xl hover:cursor-pointer  hover:bg-stone-900 hover:text-white">{m.name}</div>
+                           </div>
                         </div>
-                     </div>
-                     </>
-                  ))}
+                        </>
+                     ))}
+                  </div>
                </div>
+
             </div>
 
-         </div>
 
 
 
 
+            <div className="mx-auto justify-items-center">
 
-      <div className="mx-auto">
-         <div>
-               <div className="p-10">
-                  <button onClick={ async () => {
-                        setshowInput(true)
-                        const response = await axios.post("http://localhost:4000/subject" , 
-                           { headers : {
-                              token : localStorage.getItem("token")
-                           }},
-                           { data : {
-                              subjectName:showInput
+                  
+                  <div className="p-10 ">
+                     <button onClick={ () => {
+                           setshowInput(true)
                            }}
-                        )
-                  }}
-                  className=" bg-gray-400/40 h-18 w-100 rounded-2xl text-gray-300 text-3xl font-semibold border border-2 border-gray-400 hover:bg-stone-600 hover:shadow-xs hover:shadow-white hover:scale-101 hover:white">Add a new subject
-                  </button>
-               </div>  
-         </div>   
+                     className="bg-gray-400/40 h-18 w-100 rounded-2xl text-gray-300 text-3xl font-semibold border border-2 border-gray-400 hover:bg-stone-600 hover:shadow-xs hover:shadow-white hover:scale-101 hover:white">Add a new subject
+                     </button>
+                  </div>  
+                    
 
-                   
-               </div>
-               <motion.div className="bg-white/50 h-100 w-200">
-                  {setshowInput && (
-                     <>
-                     <button className="bg-white h-10">Add subject</button>
-                     </>
-                  )}  
-               </motion.div>
+                           
+                     {showInput && (
+                        <> 
+                        <motion.div 
+                        initial={{opacity:0 , scale:0.5}}
+                        whileInView={{opacity:1 , scale:1}}
+                        transition={{duration:.3 }}
+                        className="mt-12 mb-20 bg-stone-600/50 h-40 w-180 rounded-3xl p-4 border-2 border-gray-500 justify-items-center flex gap-10 items-center hover:scale-101">
+                              <div><input type="text"  placeholder="Enter the name of subject" maxLength="30" onChange={ (e) => setcreateSubject(e.target.value)}
+                              className="bg-zinc-900/70 h-17 w-128 rounded-3xl border-2 border-gray-800 text-xl font-semibold text-gray-400 p-5 hover:bg-stone-700 hover:text-white hover:border-gray-900 outline-none" /></div>
+                              <div><button  onClick={ async () => {
+                                    const res = await axios.post("http://localhost:4000/subject" ,
+                                       {
+                                           subjectName : createSubject
+                                       },
+                                       {headers : {
+                                          token : localStorage.getItem("token")
+                                       }} 
+                                 )
+
+                                 if(res) {
+                                    setshowsuccess(true)
+                                    setSuccessmsg( prev => [...prev ,"Subject added !"] )
+                                 }
+                              }}
+                              className="bg-gray-900 w-34 h-13 text-xl text-yellow-700 font-semibold border-1 rounded-2xl border-yellow-900 hover:bg-stone-900 hover:text-gray-300">Add subject</button></div>
+                        </motion.div>
+                        
+   
+                        {showsuccess && (
+                              successmsg.map(msg => (
+                              <motion.div
+                              initial={{ opacity: 0, scale: 0.5 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ duration: 0.3 }}
+                              className="bg-gray-900 rounded-3xl border border-yellow-900 mt-2"
+                              >
+                              <div className="h-19 w-88 text-3xl font-bold text-green-600 text-center p-1">
+                                 {msg}
+                                 <div className="text-sm font-semibold text-gray-400 mt-2">
+                                    (Click on "Refresh" to see newly added subject)
+                                 </div>
+                              </div>
+                              </motion.div>
+                           ))
+                        )}
+
+
+                        </>
+                     )}  
+
+            </div>
+
+
 
       </div>
           
+
+
 
             
 

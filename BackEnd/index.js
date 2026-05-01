@@ -88,6 +88,12 @@ app.post("/subject", authMiddleware , async (req,res) => {
         })
       }
 
+    if (subjectName === "") {
+        return res.status(402).json({
+            msg : "Subject name is required"
+        })
+    }
+
     const subject = await pool.query(`INSERT INTO subjects (name,userId) VALUES ($1,$2) RETURNING id`,[subjectName,userId])
     console.log(subject)
     res.json({
