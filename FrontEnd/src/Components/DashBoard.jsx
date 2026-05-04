@@ -14,6 +14,9 @@ export function DashBoard () {
   const [showdelSub , setshowdelSub] = useState([]);
   const [showsuccess , setshowsuccess] = useState(false);
   const [successmsg, setSuccessmsg] = useState([]);
+  const [existingDiv , setexistingDiv] = useState(false);
+  const [existingDivData , setexistingDivData] = useState([]);
+
   
   
   useEffect(()=> {
@@ -31,8 +34,7 @@ export function DashBoard () {
   },[])
 
   
-    return <>
-               
+    return <>    
 
        <div className="bg-black min-h-screen flex flex-col bg-[linear-gradient(rgba(128,128,128,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(128,128,128,0.15)_1px,transparent_1px)] bg-[size:80px_80px]">
            
@@ -102,20 +104,32 @@ export function DashBoard () {
                                  )
                               setshowsub(res.data.subjects)
                               }}
-                              className=" bg-gray-900 text-gray-300 h-8 w-22 text-lg border border-yellow-900 border-1 rounded-3xl hover:cursor-pointer hover:bg-stone-900 hover:text-white mr-3">Refresh
+                              className=" bg-gray-900 text-gray-300 h-8 w-22 text-lg border border-yellow-900 border-1 rounded-3xl hover:cursor-pointer hover:bg-stone-900 hover:text-white mr-3">
+                                 Refresh
+                              
                      </button>
+                     
                </div>
 
                <div  className="flex mt-2 ">
                   <div className="flex flex-col gap-5">
                      {showsub.map((m,index) => (
                         <>
-                        <div className="flex h-20 w-100">
+                        <div className="flex h-20 w-100 ">
                            <div className="flex p-2">
-                              <div className="bg-zinc-700 text-black font-semibold h-15 w-15 ml-5 p-4 text-xl border border-yellow-900 border-l-1 border-t-1 border-b-1 text-center rounded-l-lg">{index + 1}</div>
+                              <div className="bg-zinc-700 text-black font-semibold h-15 w-15 ml-5 p-4 text-xl border border-yellow-900 border-l-1 border-t-1 border-b-1 text-center rounded-l-lg">
+                                 {index + 1}</div>
                               <div onClick={()=>{
-                                 alert("Hello")
-                              }} className="bg-gray-900 text-gray-400 h-15 w-80 p-4 text-xl border border-yellow-900 border-1 rounded-r-4xl hover:cursor-pointer  hover:bg-stone-900 hover:text-white">{m.name}</div>
+                                 setexistingDiv(true);
+                                 setexistingDivData([m]);
+                              }} 
+                              className=" relative grid items-center group bg-gray-900 text-gray-400 h-15 w-80 p-4 text-xl border border-yellow-900 border-1 rounded-r-4xl hover:cursor-pointer  hover:bg-stone-900 hover:text-white">
+                                 {m.name}
+                                 <div className="absolute opacity-0 group-hover:opacity-100 bg-gray-700 text-gray-300 text-sm p-2 mt-10 w-20 rounded-xl font-semibold ml-30 transition duration-800">
+                                       Click here to edit
+                                 </div>
+
+                              </div>
                            </div>
                         </div>
                         </>
@@ -134,13 +148,14 @@ export function DashBoard () {
                   
                   <div className="p-10 ">
                      <button onClick={ () => {
-                           setshowInput(true)
+                        setshowInput(true)
                            }}
-                     className="bg-gray-400/40 h-18 w-100 rounded-2xl text-gray-300 text-3xl font-semibold border border-2 border-gray-400 hover:bg-stone-600 hover:shadow-xs hover:shadow-white hover:scale-101 hover:white">Add a new subject
+                           className="bg-gray-400/40 h-18 w-100 rounded-2xl text-gray-300 text-3xl font-semibold border border-2 border-gray-400 hover:bg-stone-600 hover:shadow-xs hover:shadow-white hover:scale-101 hover:white">
+                              Add a new subject
                      </button>
                   </div>  
                     
-
+ 
                            
                      {showInput && (
                         <> 
@@ -169,16 +184,21 @@ export function DashBoard () {
                               className="bg-gray-900 w-34 h-13 text-xl text-yellow-700 font-semibold border-1 rounded-2xl border-yellow-900 hover:bg-stone-900 hover:text-gray-300">Add subject</button></div>
                         </motion.div>
                         
+
+
+
+                     
+
    
                         {showsuccess && (
                               successmsg.map(msg => (
                               <motion.div
                               initial={{ opacity: 0, scale: 0.5 }}
-                              animate={{ opacity: 1, scale: 1 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
                               transition={{ duration: 0.3 }}
-                              className="bg-gray-900 rounded-3xl border border-yellow-900 mt-2"
+                              className="bg-gray-900 rounded-3xl border border-yellow-900  mb-18"
                               >
-                              <div className="h-19 w-88 text-3xl font-bold text-green-600 text-center p-1">
+                              <div className="h-19 w-88 text-3xl font-bold text-green-600 text-center p-1 ">
                                  {msg}
                                  <div className="text-sm font-semibold text-gray-400 mt-2">
                                     (Click on "Refresh" to see newly added subject)
@@ -187,14 +207,51 @@ export function DashBoard () {
                               </motion.div>
                            ))
                         )}
-
-
+                        
                         </>
                      )}  
+                        <div>
+
+
+                        { existingDiv && ( 
+                           <motion.div
+                           initial={{ opacity: 0, scale: 0.5 }}
+                           whileInView={{ opacity: 1, scale: 1 }}
+                           transition={{ duration: 0.4}}
+                           viewport={{once:true}}
+                           className="bg-gray-400/40 h-160 w-180 rounded-3xl mt-8 border-2 border-gray-400">
+                              <div className="flex justify-between items-center mt-6">
+                                 <div className="bg-gray-900 border-2 border-gray-400 h-16 rounded-2xl ml-6 flex items-center"> 
+                                    {existingDivData.map((m) => (
+                                       <div className="text-white text-3xl font-semibold ml-4 mr-4 mb-2">{m.name}</div>
+                                          ))}
+                                       </div>
+                                 <button
+                                 onClick={ () => {
+                                    setexistingDiv(false);
+                                 }}
+                                 className="bg-white text-gray-700 text-md font-bold h-9 w-18 rounded-xl border-2 border-gray-500 hover:bg-red-500 hover:text-white mr-6 hover:border-white"> Close </button>
+                              </div>
+
+
+
+                              <div>
+                                 {/* Calendar logic */}
+                              </div>
+
+
+                                {/* button to delete subject */}
+
+                           </motion.div>
+                            )    
+                        }
+                        </div>
 
             </div>
+            
 
-
+            
+      
 
       </div>
           
