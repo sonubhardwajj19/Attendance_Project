@@ -237,7 +237,7 @@ export function DashBoard () {
 
 
                               <div>
-                                 {/* Calendar*/}
+                                 {/* Calendar logic is to be written*/}
                               </div>
 
 
