@@ -4,6 +4,9 @@ import {useEffect, useState} from "react"
 import axios from "axios";
 import { motion } from "framer-motion";
 
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+
 
 export function DashBoard () {
   const navigate = useNavigate();
@@ -30,6 +33,8 @@ export function DashBoard () {
 
          getSubjects()
       },[])
+      
+
      
     return <>    
 
@@ -106,15 +111,14 @@ export function DashBoard () {
                      </button>
                      
                </div>
-                                   
+
+            
                   {showsub.length===0 && (
                      <>
-                     <div className=" h-18 w-100 flex justify-center items-center text-xl text-gray-400 mt-60 ml-9 bg-gray-800 rounded-3xl">You have not added any subject yet </div>
+                     <div className=" h-18 w-100 flex justify-center items-center text-xl text-gray-400 mt-40 ml-9 bg-gray-800 rounded-3xl">You have not added any subject yet </div>
                      </>
                   )}
  
-                       
-
 
 
                <div  className="flex mt-2 ">
@@ -123,13 +127,13 @@ export function DashBoard () {
                         <>
                         <div className="flex h-20 w-100 ">
                            <div className="flex p-2">
-                              <div className="bg-zinc-700 text-black font-semibold h-15 w-15 ml-5 p-4 text-xl border border-yellow-900 border-l-1 border-t-1 border-b-1 text-center rounded-l-lg">
+                              <div className="bg-zinc-700 text-black font-semibold h-15 w-15 ml-5 p-4 text-xl border border-gray-600 border border-l-1 border-t-1 border-b-1 text-center rounded-l-lg">
                                  {index + 1}</div>
                               <div onClick={()=>{
                                  setexistingDiv(true);
                                  setexistingDivData([m]);
                               }} 
-                              className=" relative grid items-center group bg-gray-900 text-gray-400 h-15 w-80 p-4 text-xl border border-yellow-900 border-1 rounded-r-4xl hover:cursor-pointer  hover:bg-stone-900 hover:text-white">
+                              className=" relative grid items-center group bg-gray-900 text-gray-400 h-15 w-80 p-4 text-xl border border-gray-600 border-1 rounded-r-4xl hover:cursor-pointer  hover:bg-stone-900 hover:text-white">
                                  {m.name}
                                  <div className="absolute opacity-0 group-hover:opacity-100 bg-gray-800 text-gray-300 text-sm  p-2 mt-10 w-20 rounded-xl ml-30 transition duration-800">
                                        Click here to edit
@@ -156,7 +160,7 @@ export function DashBoard () {
                      <button onClick={ () => {
                         setshowInput(true)
                            }}
-                           className="bg-gray-400/40 h-18 w-100 rounded-2xl text-gray-300 text-3xl font-semibold border border-2 border-gray-400 hover:bg-stone-600 hover:shadow-xs hover:shadow-white hover:scale-101 hover:white">
+                           className="bg-gray-900 h-18 w-100 rounded-2xl text-gray-300 text-3xl font-semibold border-2 border-gray-300 hover:bg-gray-700 hover:shadow-xs hover:scale-101 hover:text-white">
                               Add a new subject
                      </button>
                   </div>  
@@ -233,7 +237,7 @@ export function DashBoard () {
                            whileInView={{ opacity: 1, scale: 1 }}
                            transition={{ duration: 0.4 }}
                            viewport={{once:true}}
-                           className="bg-gray-400/40 h-160 w-180 rounded-3xl mt-8 border-2 border-gray-400">
+                           className="bg-gray-400/40 h-160 w-180 rounded-3xl mt-8 border-2 border-gray-400 mb-50">
                               <div className="flex justify-between items-center mt-6">
                                  <div className="bg-gray-900 border-2 border-gray-400 h-16 rounded-2xl ml-6 flex items-center"> 
                                     {existingDivData.map((m) => (
@@ -255,7 +259,7 @@ export function DashBoard () {
                               </div>
 
 
-                             <div className="relative group h-12 w-24 bg-gray-900 rounded-3xl border-2 border-yellow-700 hover:bg-red-500 hover:border-white flex m-4">
+                             <div className="relative group h-12 w-24 bg-gray-900 rounded-3xl border-2 border-yellow-700 hover:bg-red-500 hover:border-white flex m-4 ">
                                  <button onClick={ async () => {
                                     const response = await axios.delete("http://localhost:4000/subject" , {
                                        data : {
