@@ -230,7 +230,8 @@ export function DashBoard () {
                                  onClick={ () => {
                                     setexistingDiv(false);
                                  }}
-                                 className="bg-white text-gray-700 text-md font-bold h-9 w-18 rounded-xl border-2 border-gray-500 hover:bg-red-500 hover:text-white mr-6 hover:border-white"> Close </button>
+                                 className="bg-white text-gray-700 text-md font-bold h-9 w-18 rounded-xl border-2 border-gray-500 hover:bg-red-500 hover:text-white mr-6 hover:border-white">
+                                  Close </button>
                               </div>
 
 
@@ -240,7 +241,21 @@ export function DashBoard () {
                               </div>
 
 
-                                {/* button to delete subject */}
+                              <button onClick={ async () => {
+                                  const response = await axios.delete("http://localhost:4000/subject" , {
+                                    data : {
+                                       subjectId : existingDivData[0].Id
+                                    },
+                                    headers : {
+                                       token : localStorage.getItem("token")
+                                    }
+                                 })
+                  
+
+            
+                              }}
+                              className="bg-white"
+                              >Delete</button>
 
                            </motion.div>
                             )    

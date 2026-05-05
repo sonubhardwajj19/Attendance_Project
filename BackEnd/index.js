@@ -124,7 +124,7 @@ app.get("/subject" , authMiddleware , async (req,res) => {
   catch(e) {
             res.status(403).json({
                 msg : "Invalid userId"
-            })
+           })
         }
 })
 
