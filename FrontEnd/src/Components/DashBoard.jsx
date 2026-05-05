@@ -241,21 +241,25 @@ export function DashBoard () {
                               </div>
 
 
-                              <button onClick={ async () => {
-                                  const response = await axios.delete("http://localhost:4000/subject" , {
-                                    data : {
-                                       subjectId : existingDivData[0].Id
-                                    },
-                                    headers : {
-                                       token : localStorage.getItem("token")
-                                    }
-                                 })
-                  
-
-            
-                              }}
-                              className="bg-white"
-                              >Delete</button>
+                             <div className="relative group h-12 w-24 bg-gray-900 rounded-3xl border-2 border-yellow-700 hover:bg-red-500 hover:border-white flex m-4">
+                                 <button onClick={ async () => {
+                                    const response = await axios.delete("http://localhost:4000/subject" , {
+                                       data : {
+                                          subjectId : existingDivData[0].Id
+                                       },
+                                       headers : {
+                                          token : localStorage.getItem("token")
+                                       }
+                                    })
+                                 }}
+                                 className="h-full w-full text-xl font-semibold  text-gray-200 hover:text-white"
+                                 >Delete
+                                 </button>
+                                 <div className="absolute bg-gray-800 text-gray-300 w-28 text-sm p-1 rounded-lg ml-20 mt-6 opacity-0 border border-gray-400 group-hover:opacity-100 transition duration-600 pointer-events-none">
+                                    Click to delete this subject
+                                 </div>
+                              </div>
+                           
 
                            </motion.div>
                             )    
