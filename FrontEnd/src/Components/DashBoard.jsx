@@ -9,9 +9,7 @@ export function DashBoard () {
   const navigate = useNavigate();
   const [showInput ,setshowInput] = useState(false);
   const [createSubject , setcreateSubject] = useState("");
-  const [showDel , setshowDel] = useState(false);
   const [showsub , setshowsub] = useState([]);
-  const [showdelSub , setshowdelSub] = useState([]);
   const [showsuccess , setshowsuccess] = useState(false);
   const [successmsg, setSuccessmsg] = useState([]);
   const [existingDiv , setexistingDiv] = useState(false);
@@ -19,21 +17,20 @@ export function DashBoard () {
 
   
   
-  useEffect(()=> {
-     async function getSubjects() {
-      const res =  await axios.get("http://localhost:4000/subject" ,
-         {headers: {
-           token : localStorage.getItem("token")
-         }}
-       )
-      
-       setshowsub(res.data.subjects)
-     } 
+      useEffect(()=> {
+         async function getSubjects() {
+            const res =  await axios.get("http://localhost:4000/subject" ,
+               {headers: {
+               token : localStorage.getItem("token")
+               }}
+            )
+            
+            setshowsub(res.data.subjects)
+         } 
 
-     getSubjects()
-  },[])
-
-  
+         getSubjects()
+      },[])
+     
     return <>    
 
        <div className="bg-black min-h-screen flex flex-col bg-[linear-gradient(rgba(128,128,128,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(128,128,128,0.15)_1px,transparent_1px)] bg-[size:80px_80px]">
@@ -91,7 +88,7 @@ export function DashBoard () {
 
       <div className="flex flex-1 pt-20">
 
-            <div className="pt-4 w-120 bg-gray-950 border-r-2 border-t-2 border-gray-500 rounded-t-lg items-center ">
+            <div className="pt-4 w-120 bg-gray-950 border-r-2 border-t-2 border-gray-500 rounded-t-lg items-center min-h-screen">
                <div className="w-full h-12 text-center text-yellow-700 border-b-1 border-gray-700 rounded-xl text-xl font-semibold flex justify-between">
                   <span className="ml-7">Existing subjects</span>
                      <button onClick={async() => {
@@ -106,10 +103,19 @@ export function DashBoard () {
                               }}
                               className=" bg-gray-900 text-gray-300 h-8 w-22 text-lg border border-yellow-900 border-1 rounded-3xl hover:cursor-pointer hover:bg-stone-900 hover:text-white mr-3">
                                  Refresh
-                              
                      </button>
                      
                </div>
+                                   
+                  {showsub.length===0 && (
+                     <>
+                     <div className=" h-18 w-100 flex justify-center items-center text-xl text-gray-400 mt-60 ml-9 bg-gray-800 rounded-3xl">You have not added any subject yet </div>
+                     </>
+                  )}
+ 
+                       
+
+
 
                <div  className="flex mt-2 ">
                   <div className="flex flex-col gap-5">
@@ -125,7 +131,7 @@ export function DashBoard () {
                               }} 
                               className=" relative grid items-center group bg-gray-900 text-gray-400 h-15 w-80 p-4 text-xl border border-yellow-900 border-1 rounded-r-4xl hover:cursor-pointer  hover:bg-stone-900 hover:text-white">
                                  {m.name}
-                                 <div className="absolute opacity-0 group-hover:opacity-100 bg-gray-700 text-gray-300 text-sm p-2 mt-10 w-20 rounded-xl font-semibold ml-30 transition duration-800">
+                                 <div className="absolute opacity-0 group-hover:opacity-100 bg-gray-800 text-gray-300 text-sm  p-2 mt-10 w-20 rounded-xl ml-30 transition duration-800">
                                        Click here to edit
                                  </div>
 
@@ -154,9 +160,7 @@ export function DashBoard () {
                               Add a new subject
                      </button>
                   </div>  
-                    
- 
-                           
+        
                      {showInput && (
                         <> 
                         <motion.div 
@@ -167,43 +171,53 @@ export function DashBoard () {
                               <div><input type="text"  placeholder="Enter the name of subject" maxLength="30" onChange={ (e) => setcreateSubject(e.target.value)}
                               className="bg-zinc-900/70 h-17 w-128 rounded-3xl border-2 border-gray-800 text-xl font-semibold text-gray-400 p-5 hover:bg-stone-700 hover:text-white hover:border-gray-900 outline-none" /></div>
                               <div><button  onClick={ async () => {
-                                    const res = await axios.post("http://localhost:4000/subject" ,
-                                       {
-                                           subjectName : createSubject
-                                       },
-                                       {headers : {
-                                          token : localStorage.getItem("token")
-                                       }} 
-                                 )
+                                       const res = await axios.post("http://localhost:4000/subject" ,
+                                          {
+                                             subjectName : createSubject
+                                          },
+                                          {headers : {
+                                             token : localStorage.getItem("token")
+                                          }} 
+                                    )
 
-                                 if(res) {
-                                    setshowsuccess(true)
-                                    setSuccessmsg( prev => [...prev ,"Subject added !"] )
-                                 }
-                              }}
-                              className="bg-gray-900 w-34 h-13 text-xl text-yellow-700 font-semibold border-1 rounded-2xl border-yellow-900 hover:bg-stone-900 hover:text-gray-300">Add subject</button></div>
+                                    if(res) {
+                                       setshowsuccess(true);
+                                       setSuccessmsg( prev => [...prev ,"Subject added !"] )
+                                    }
+
+                                    const response =  await axios.get("http://localhost:4000/subject" , 
+                                       { headers : {
+                                          token : localStorage.getItem("token")
+                                       }}
+                                    )
+                                       setshowsub(response.data.subjects);
+
+                                    setTimeout(() => {
+                                       setshowsuccess(false);
+                                       setSuccessmsg([]);
+                                    }, 4000);   
+                                 
+                                 }}
+                                 className="bg-gray-900 w-34 h-13 text-xl text-yellow-700 font-semibold border-1 rounded-2xl border-yellow-900 hover:bg-stone-900 hover:text-gray-300">
+                                 Add subject</button>
+                              </div>
                         </motion.div>
                         
 
 
 
                      
-
+  
    
                         {showsuccess && (
                               successmsg.map(msg => (
                               <motion.div
                               initial={{ opacity: 0, scale: 0.5 }}
                               whileInView={{ opacity: 1, scale: 1 }}
-                              transition={{ duration: 0.3 }}
-                              className="bg-gray-900 rounded-3xl border border-yellow-900  mb-18"
+                              transition={{ duration: 0.3}}
+                              className="bg-gray-900 rounded-3xl border border-yellow-900  mb-18 h-16 w-75 text-3xl font-bold text-green-600 flex justify-center items-center "
                               >
-                              <div className="h-19 w-88 text-3xl font-bold text-green-600 text-center p-1 ">
                                  {msg}
-                                 <div className="text-sm font-semibold text-gray-400 mt-2">
-                                    (Click on "Refresh" to see newly added subject)
-                                 </div>
-                              </div>
                               </motion.div>
                            ))
                         )}
@@ -217,7 +231,7 @@ export function DashBoard () {
                            <motion.div
                            initial={{ opacity: 0, scale: 0.5 }}
                            whileInView={{ opacity: 1, scale: 1 }}
-                           transition={{ duration: 0.4}}
+                           transition={{ duration: 0.4 }}
                            viewport={{once:true}}
                            className="bg-gray-400/40 h-160 w-180 rounded-3xl mt-8 border-2 border-gray-400">
                               <div className="flex justify-between items-center mt-6">
@@ -251,11 +265,22 @@ export function DashBoard () {
                                           token : localStorage.getItem("token")
                                        }
                                     })
+                                    if(response){
+                                       setexistingDiv(false)
+                                    }
+                                 
+                                    const res =  await axios.get("http://localhost:4000/subject" , 
+                                             { headers : {
+                                                token : localStorage.getItem("token")
+                                             }}
+                                          )
+                                       setshowsub(res.data.subjects)
+                                       
                                  }}
                                  className="h-full w-full text-xl font-semibold  text-gray-200 hover:text-white"
                                  >Delete
                                  </button>
-                                 <div className="absolute bg-gray-800 text-gray-300 w-28 text-sm p-1 rounded-lg ml-20 mt-6 opacity-0 border border-gray-400 group-hover:opacity-100 transition duration-600 pointer-events-none">
+                                 <div className="absolute bg-gray-800 text-gray-300 w-28 text-sm p-2 rounded-lg ml-20 mt-6 opacity-0  group-hover:opacity-100 transition duration-600 pointer-events-none">
                                     Click to delete this subject
                                  </div>
                               </div>
@@ -264,6 +289,8 @@ export function DashBoard () {
                            </motion.div>
                             )    
                         }
+
+   
                         </div>
 
             </div>
