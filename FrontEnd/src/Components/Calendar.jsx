@@ -92,9 +92,8 @@ function Calendar() {
 	  
   return (  
     <>
-    
-      
-          <div className="bg-gray-300 mt-30 rounded-lg shadow p-4 absolute w-140 h-70 ">
+
+          <div className="bg-gray-300  ml-6 rounded-lg shadow p-4 absolute w-140 h-70 ">
 
             <div className="flex justify-between items-center mb-2 ">
               <div>

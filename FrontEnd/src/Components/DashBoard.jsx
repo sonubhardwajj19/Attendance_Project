@@ -229,6 +229,8 @@ export function DashBoard () {
                        
                         </>
                      )}  
+
+
                         <div>
 
 
@@ -257,12 +259,14 @@ export function DashBoard () {
 
 
 
-                              <div className="">
+                             <div>
                                 <Calendar/>
-                              </div>
+                             </div>
+                             
+                              
 
-
-                             <div className="group h-12 w-24 bg-gray-900 rounded-3xl border-2 border-yellow-700 hover:bg-red-500 hover:border-white flex ">
+                            
+                              <div className="group h-12 w-24 bg-gray-900 rounded-3xl border-2 border-yellow-700 hover:bg-red-500 hover:border-white flex">
                                     <button onClick={ async () => {
                                        const response = await axios.delete("http://localhost:4000/subject" , {
                                           data : {
@@ -284,27 +288,26 @@ export function DashBoard () {
                                           setshowsub(res.data.subjects)
                                           
                                     }}
-                                    className="h-full w-full text-xl font-semibold  text-gray-200 hover:text-white"
+                                    className="h-full w-full text-xl font-semibold text-gray-200 hover:text-white"
                                     >Delete
                                     </button>
                                     <div className="absolute bg-gray-800 text-gray-300 w-28 text-sm p-2 rounded-lg ml-20 mt-6 opacity-0  group-hover:opacity-100 transition duration-600 pointer-events-none">
                                        Click to delete this subject
                                     </div>
                               </div>
+
+
+                            
                            
 
                            </motion.div>
                             )    
                         }
 
-   
                         </div>
 
             </div>
             
-
-      
-
       </div>
           
 
