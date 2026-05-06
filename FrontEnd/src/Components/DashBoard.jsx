@@ -1,10 +1,10 @@
-import { div, input } from "framer-motion/client";
+
 import { useNavigate } from "react-router-dom"
 import {useEffect, useState} from "react"
 import axios from "axios";
 import { motion } from "framer-motion";
+import Calendar from "./Calendar";
 
-import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 
@@ -226,67 +226,70 @@ export function DashBoard () {
                            ))
                         )}
                         
+                       
                         </>
                      )}  
                         <div>
 
 
                         { existingDiv && ( 
+                           
                            <motion.div
                            initial={{ opacity: 0, scale: 0.5 }}
                            whileInView={{ opacity: 1, scale: 1 }}
                            transition={{ duration: 0.4 }}
                            viewport={{once:true}}
-                           className="bg-gray-400/40 h-160 w-180 rounded-3xl mt-8 border-2 border-gray-400 mb-50">
+                           className="bg-gray-400/40 h-160 w-180 rounded-3xl mt-8 border-2 border-gray-400 mb-50 flex flex-col">
+                           
                               <div className="flex justify-between items-center mt-6">
-                                 <div className="bg-gray-900 border-2 border-gray-400 h-16 rounded-2xl ml-6 flex items-center"> 
-                                    {existingDivData.map((m) => (
-                                       <div className="text-white text-3xl font-semibold ml-4 mr-4 mb-2">{m.name}</div>
-                                          ))}
-                                       </div>
-                                 <button
-                                 onClick={ () => {
-                                    setexistingDiv(false);
-                                 }}
-                                 className="bg-white text-gray-700 text-md font-bold h-9 w-18 rounded-xl border-2 border-gray-500 hover:bg-red-500 hover:text-white mr-6 hover:border-white">
-                                  Close </button>
+                                    <div className="bg-gray-900 border-2 border-gray-400 h-16 rounded-2xl ml-6 flex items-center"> 
+                                       {existingDivData.map((m) => (
+                                          <div className="text-white text-3xl font-semibold ml-4 mr-4 mb-2">{m.name}</div>
+                                             ))}
+                                          </div>
+                                    <button
+                                    onClick={ () => {
+                                       setexistingDiv(false);
+                                    }}
+                                    className="bg-white text-gray-700 text-md font-bold h-9 w-18 rounded-xl border-2 border-gray-500 hover:bg-red-500 hover:text-white mr-6 hover:border-white">
+                                    Close </button>
                               </div>
 
 
 
-                              <div>
-                                 {/* Calendar logic is to be written*/}
+                              <div className="">
+                                <Calendar/>
                               </div>
 
 
-                             <div className="relative group h-12 w-24 bg-gray-900 rounded-3xl border-2 border-yellow-700 hover:bg-red-500 hover:border-white flex m-4 ">
-                                 <button onClick={ async () => {
-                                    const response = await axios.delete("http://localhost:4000/subject" , {
-                                       data : {
-                                          subjectId : existingDivData[0].Id
-                                       },
-                                       headers : {
-                                          token : localStorage.getItem("token")
+                             <div className="group h-12 w-24 bg-gray-900 rounded-3xl border-2 border-yellow-700 hover:bg-red-500 hover:border-white flex ">
+                                    <button onClick={ async () => {
+                                       const response = await axios.delete("http://localhost:4000/subject" , {
+                                          data : {
+                                             subjectId : existingDivData[0].Id
+                                          },
+                                          headers : {
+                                             token : localStorage.getItem("token")
+                                          }
+                                       })
+                                       if(response){
+                                          setexistingDiv(false)
                                        }
-                                    })
-                                    if(response){
-                                       setexistingDiv(false)
-                                    }
-                                 
-                                    const res =  await axios.get("http://localhost:4000/subject" , 
-                                             { headers : {
-                                                token : localStorage.getItem("token")
-                                             }}
-                                          )
-                                       setshowsub(res.data.subjects)
-                                       
-                                 }}
-                                 className="h-full w-full text-xl font-semibold  text-gray-200 hover:text-white"
-                                 >Delete
-                                 </button>
-                                 <div className="absolute bg-gray-800 text-gray-300 w-28 text-sm p-2 rounded-lg ml-20 mt-6 opacity-0  group-hover:opacity-100 transition duration-600 pointer-events-none">
-                                    Click to delete this subject
-                                 </div>
+                                    
+                                       const res =  await axios.get("http://localhost:4000/subject" , 
+                                                { headers : {
+                                                   token : localStorage.getItem("token")
+                                                }}
+                                             )
+                                          setshowsub(res.data.subjects)
+                                          
+                                    }}
+                                    className="h-full w-full text-xl font-semibold  text-gray-200 hover:text-white"
+                                    >Delete
+                                    </button>
+                                    <div className="absolute bg-gray-800 text-gray-300 w-28 text-sm p-2 rounded-lg ml-20 mt-6 opacity-0  group-hover:opacity-100 transition duration-600 pointer-events-none">
+                                       Click to delete this subject
+                                    </div>
                               </div>
                            
 
@@ -300,7 +303,6 @@ export function DashBoard () {
             </div>
             
 
-            
       
 
       </div>
