@@ -1,5 +1,7 @@
 import { useState , useEffect} from 'react';
 import '../App.css'
+import { applyTreeDeltas, defaultValueTypes } from 'framer-motion';
+import { div } from 'framer-motion/client';
 
 
 
@@ -19,12 +21,13 @@ function Calendar() {
 		const [datepickerValue, setDatepickerValue] = useState("");
 		const [selectedDate] = useState(null);
 		const [dateFormat] = useState("DD-MM-YYYY");
-	  
 		const [month, setMonth] = useState(0);
 		const [year, setYear] = useState(0);
 		const [noOfDays, setNoOfDays] = useState([]);
 		const [blankDays, setBlankDays] = useState([]);
 	  
+    const [recordDiv , setrecordDiv] = useState(false)
+
 		useEffect(() => {
 		  initDate();
 		}, []);
@@ -136,6 +139,7 @@ function Calendar() {
               </div>
             </div>
 
+X
             {/* Days */}
             <div className="flex flex-wrap mb-2 ">
               {DAYS.map((day) => (
@@ -144,6 +148,7 @@ function Calendar() {
                 </div>
               ))}
             </div>
+
 
             {/* Dates */}
             <div className="flex flex-wrap">
@@ -154,16 +159,20 @@ function Calendar() {
               {noOfDays.map((date) => (
                 <div key={date} className="w-[14.28%] p-1 ">
                   <div
-                    onClick={() => getDateValue(date)}
+                    onClick={() => {setrecordDiv(true)
+                      getDateValue(date) 
+                    }}
                     className={`text-sm rounded-sm h-12  flex justify-center items-center cursor-pointer bg-red-500 ${
                       isToday(date)
                         ? "bg-indigo-200"
                         : isSelectedDate(date)
-                        ? "bg-indigo-500 text-white"
-                        : "hover:bg-indigo-200"
+                        ? "text-white"
+                        : "hover:bg-gray-600"
                     }`}
                   >
                     {date}
+
+              
                   </div>
                 </div>
               ))}

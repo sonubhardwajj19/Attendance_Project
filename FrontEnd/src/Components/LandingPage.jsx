@@ -89,7 +89,7 @@ export function LandingPage () {
               whileInView={{ opacity:1, scale:1 }}
               transition={{ duration:.8 }}
               viewport={{ once:false }}
-              className="ml-20 h-100 w-120 mr-20 border-2  border-white rounded-3xl mt-30 "
+              className="ml-20 h-100 w-120 mr-20 shadow-sm shadow-white rounded-3xl mt-30 "
               >
   
           </motion.div>
@@ -100,7 +100,7 @@ export function LandingPage () {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration:.6, delay:.2 }}
               viewport={{ once: false }}
-              className=" bg-zinc-900/80 border border-3 border-[#7A1CAC] ml-auto h-140 w-200 mr-20  border  p-5 rounded-3xl mt-10 hover:shadow-md hover:shadow-[#7A1CAC] ">
+              className=" bg-zinc-900/70 shadow-sm shadow-[#7A1CAC] ml-auto h-140 w-200 mr-20  border  p-5 rounded-3xl mt-10 hover:-translate-y-0.5">
               <div className="flex gap-3 mt-15 ">
                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="#7A1CAC" className="size-6 mt-1">
                    <path strokeLinecap="round" strokeLinejoin="round" d="m16.49 12 3.75 3.75m0 0-3.75 3.75m3.75-3.75H3.74V4.499" />
@@ -130,13 +130,13 @@ export function LandingPage () {
 
 
 
-        <div   id="works" className="flex mt-20">
+        <div   id="works" className="flex mt-20 ">
             <motion.div 
                 initial={{ opacity: 0, x: 200 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration:.6, delay:.2 }}
                 viewport={{ once: false }}
-                className=" bg-zinc-900/80 mr-auto  border-3 border-white h-140 w-200 ml-20 p-5 rounded-3xl mt-10 hover:shadow-md hover:shadow-white">
+                className=" bg-zinc-900/70 mr-auto  shadow-sm shadow-white h-140 w-200 ml-20 p-5 rounded-3xl mt-10 hover:-translate-y-0.5">
                           <div className="flex gap-3 mt-15">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="white" className="size-6 mt-1">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m16.49 12 3.75 3.75m0 0-3.75 3.75m3.75-3.75H3.74V4.499" />
@@ -168,10 +168,9 @@ export function LandingPage () {
                 whileInView={{ opacity:1, scale:1 }}
                 transition={{ duration:.8 }}
                 viewport={{ once:false }}
-                className="mr-20 h-100 w-120 ml-auto  mt-30 text-3xl bg-black"
+                className="mr-20 w-120 ml-autobg-black mt-8 shadow-sm"
                 >
-         
-                <img src="/src/assets/sig.png" alt="Sorry error occurred"  className="h-full w-full object-fit  rounded-xl p-1"/>
+                <img src="/src/assets/sign.png" alt="Sorry error occurred"  className="h-full w-full object-fit  rounded-xl p-1"/>
             </motion.div>
         </div>
 
@@ -183,7 +182,7 @@ export function LandingPage () {
                 whileInView={{ opacity:1, scale:1 }}
                 transition={{ duration:.8 }}
                 viewport={{ once:false }}
-                className="ml-20 h-100 w-120 mr-20  border-2 border-white rounded-3xl mt-30 "
+                className="ml-20 h-100 w-120 mr-20 shadow-sm shadow-white rounded-3xl mt-30 "
                 >
             </motion.div>
 
@@ -193,7 +192,7 @@ export function LandingPage () {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration:.6, delay:.2 }}
                 viewport={{ once: false }}
-                className="bg-zinc-900/80 border border-3 border-[#7A1CAC] ml-auto h-140 w-200 mr-20  border p-5 rounded-3xl mt-10  hover:shadow-md hover:shadow-[#7A1CAC] ">
+                className="bg-zinc-900/70 shadow-sm shadow-[#7A1CAC] ml-auto h-140 w-200 mr-20 p-5 rounded-3xl mt-10  hover:-translate-y-0.5">
                   <h4 className=" text-6xl ml-6 mt-4 font-bold text-white">Who it's for</h4>
                 <div className="flex gap-3 mt-15">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="#7A1CAC" className="size-6 mt-1">
@@ -234,7 +233,7 @@ export function LandingPage () {
               whileInView={{opacity:1 , scale:1 , x :-310 , y: 130 ,backgroundColor:"#1c1917"}}
               transition={{duration:1}}
               viewport={{once:false}}
-              className="mx-auto h-60 w-110 border border-2 border-[#7A1CAC] rounded-2xl relative  duration-600 hover:z-50 hover:-translate-y-2 hover:scale-105  hover:cursor-pointer " >
+              className="mx-auto h-60 w-110 shadow-sm shadow-gray-400 rounded-2xl relative  duration-600 hover:z-50 hover:-translate-y-2 hover:scale-105  hover:cursor-pointer" >
             <div className="p-3">
               <h1 className="text-3xl font-bold p-1 text-white ml-7 ">Eliminate Manual Attendance</h1>
               <li className="text-lg p-4 ml-4 text-white font-semibold">Replace outdated registers, spreadsheets, and repetitive manual processes with a streamlined digital system built to save time and reduce effort.</li>
@@ -246,7 +245,7 @@ export function LandingPage () {
             whileInView={{opacity:1, scale:1 , x:-470 , y:-280 , backgroundColor:"#1c1917"}}
             transition={{duration:1}}
             viewport={{once:false}}
-            className="mx-auto h-60 w-110 bg- border border-2 border-[#7A1CAC] rounded-2xl relative duration-600 hover:z-50 hover:translate-y-2 hover:scale-105 hover:cursor-pointer">
+            className="mx-auto h-60 w-110 shadow-sm shadow-gray-400 rounded-2xl relative  duration-600 hover:z-50 hover:-translate-y-2 hover:scale-105  hover:cursor-pointer">
               <div className="p-3">
               <h1 className="text-3xl font-bold p-1 text-white ml-7">Designed for Speed and Simplicity</h1>
               <li className="text-lg p-4 ml-4 text-white font-semibold">Mark attendance, review records, and manage workflows quickly through an intuitive experience built for efficiency.</li>
@@ -260,7 +259,7 @@ export function LandingPage () {
             whileInView={{opacity:1, scale:1  , x:20, y:-440 , backgroundColor:"#1c1917"}}
             transition={{duration:1}}
             viewport={{once:false}}
-            className="mx-auto h-60 w-110 rounded-2xl border border-2 border-[#7A1CAC] relative  duration-600 hover:z-50 hover:-translate-y-2 hover:scale-105  hover:cursor-pointer ">
+            className="mx-auto h-60 w-110 shadow-sm shadow-gray-400 rounded-2xl relative  duration-600 hover:z-50 hover:-translate-y-2 hover:scale-105  hover:cursor-pointer">
                         <div className="p-3">
               <h1 className="text-3xl font-bold p-1 text-white ml-7">Built for Accuracy and Reliability</h1>
               <li className="text-lg p-4 ml-4 text-white font-semibold">Avoid errors caused by manual tracking and maintain consistent, dependable attendance records you can trust.</li>
@@ -272,7 +271,7 @@ export function LandingPage () {
             whileInView={{opacity:1, scale:1 , x:250 , y:-550 ,backgroundColor:"#1c1917"}}
             transition={{duration:1}}
             viewport={{once:false}}
-            className="mx-auto h-60 w-110 rounded-2xl border border-2 border-[#7A1CAC] relative  duration-600 hover:z-5 hover:-translate-y-2 hover:scale-105  hover:cursor-pointer ">
+            className="mx-auto h-60 w-110 shadow-sm shadow-gray-400 rounded-2xl relative  duration-600 hover:z-50 hover:-translate-y-2 hover:scale-105  hover:cursor-pointer">
                         <div className="p-3">
               <h1 className="text-3xl font-bold p-1 text-white ml-7">Simple for Users, Powerful for Teams</h1>
               <li className="text-lg p-4 ml-4 text-white font-semibold">An easy-to-use interface for daily users combined with robust tools for administrators and managers.</li>
@@ -284,7 +283,7 @@ export function LandingPage () {
             whileInView={{opacity:1, scale:1 , x:510 , y:-970 , backgroundColor:"#1c1917" }}
             transition={{duration:1}}
             viewport={{once:false}}
-            className="mx-auto h-60 w-110 rounded-2xl border border-2  border-[#7A1CAC] relative  duration-600 hover:z-5 hover:translate-y-2 hover:scale-105   hover:cursor-pointer ">
+            className="mx-auto h-60 w-110 shadow-sm shadow-gray-400 rounded-2xl relative  duration-600 hover:z-50 hover:-translate-y-2 hover:scale-105  hover:cursor-pointer">
                         <div className="p-3">
               <h1 className="text-3xl font-bold p-1 text-white ml-7">Stay Organized Automatically</h1>
               <li className="text-lg p-4 ml-4 text-white font-semibold">Keep attendance records structured, accessible, and consistently updated without additional administrative burden.</li>

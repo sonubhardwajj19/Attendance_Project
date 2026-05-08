@@ -106,7 +106,7 @@ export function DashBoard () {
                                  )
                               setshowsub(res.data.subjects)
                               }}
-                              className=" bg-gray-900 text-gray-300 h-8 w-22 text-lg border border-yellow-900 border-1 rounded-3xl hover:cursor-pointer hover:bg-stone-900 hover:text-white mr-3">
+                              className=" bg-gray-900 text-gray-300 h-8 w-22 text-lg shadow-sm shadow-yellow-900 rounded-3xl hover:cursor-pointer hover:bg-stone-900 hover:text-white mr-3">
                                  Refresh
                      </button>
                      

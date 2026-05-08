@@ -63,7 +63,8 @@ export function SignUp () {
                 <div className="border  border-1 rounded-xl h-7 w-17  pl-3 font-semibold bg-white text-black hover:bg-gray-400"> 
                   <button onClick={() => {
                   navigate("/Login");
-                    }}>Login</button>
+                    }}
+                    className="hover:cursor-pointer">Login</button>
               </div>
              </div>
             </div>
@@ -72,14 +73,13 @@ export function SignUp () {
 
 
         <main  className="pt-40 flex-1">
-            <div className="shadow-md shadow-gray-800 p-5 rounded-xl mx-auto w-170 bg-gray-200 p-20">
+            <div className="shadow-md shadow-gray-800 p-5 rounded-xl mx-auto w-170 bg-gray-200 p-10">
                 <div className="flex flex-col items-center">
-                    <h1 className="bg-blue-600 text-white w-50 h-16 text-4xl font-bold text-center mb-10 flex justify-center p-2 shadow-sm shadow-cyan-950 rounded-xl"> Sign Up</h1>
-                    <div className=" mt-10 shadow-sm shadow-cyan-950 p-5 rounded-xl hover:bg-stone-300 w-140"><input id="name "   className="text-cyan-950 bg-transparent border-none outline-none outline-none"  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
-                    <div className=" mt-10 shadow-sm shadow-cyan-950 p-5 rounded-xl hover:bg-stone-300 w-140"><input id="email "  className="text-cyan-950 bg-transparent border-none outline-none outline-none "  type="email" placeholder="Enter email"  onChange={(e) => setEmail(e.target.value)} /></div> <br/>
-                    <div className=" mt-10 shadow-sm shadow-cyan-950 p-5 rounded-xl hover:bg-stone-300 w-140"><input id="password "  className="text-cyan-950 bg-transparent border-none outline-none outline-none" type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
-                    <div className="  mt-10 shadow-sm shadow-cyan-950 p-4 rounded-xl text-white text-center bg-blue-600 font-bold text-2xl hover:bg-blue-800  hover:-translate-y-0.5 w-140">
-                    <button onClick={ async () => {
+                    <h1 className="text-blue-600 w- h-16 text-4xl font-bold text-center mb-10 flex justify-center p-2 shadow-lg rounded-xl">Create account </h1>
+                    <div className=" mt-10 shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-140"><input id="name "   className="text-cyan-950 bg-transparent border-none outline-none outline-none "  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
+                    <div className=" mt-10 shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-140"><input id="email "  className="text-cyan-950 bg-transparent border-none outline-none outline-none "  type="email" placeholder="Enter email"  onChange={(e) => setEmail(e.target.value)} /></div> <br/>
+                    <div className=" mt-10 shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-140"><input id="password "  className="text-cyan-950 bg-transparent border-none outline-none outline-none" type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
+                    <div   onClick={ async () => {
                         const response = await axios.post("http://localhost:4000/signup" ,{
                             name : userName ,
                             email : email , 
@@ -87,11 +87,11 @@ export function SignUp () {
                         })
                         navigate('/Login')
                     }}
-                     >
-                        Sign Up</button>
-                  </div>
+                     className="  mt-10 shadow-md shadow-cyan-950 p-4 rounded-xl text-white text-center bg-blue-600 font-bold text-2xl hover:bg-blue-800 hover:cursor-pointer hover:-translate-y-0.5 w-140">
+                      Sign up
+                    </div>
 
-                        <p className="text-center mt-7 text-yellow-600 ">
+                        <p className="text-center mt-7 text-blue-800 ">
                             Already registered ? <Link to="/login" className="hover:underline">Login</Link>
                         </p>
                 </div>
