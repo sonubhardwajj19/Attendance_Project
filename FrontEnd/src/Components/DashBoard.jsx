@@ -160,7 +160,7 @@ export function DashBoard () {
                      <button onClick={ () => {
                         setshowInput(true)
                            }}
-                           className="bg-gray-900 h-18 w-100 rounded-2xl text-gray-300 text-3xl font-semibold border-2 border-gray-300 hover:bg-gray-700 hover:shadow-xs hover:scale-101 hover:text-white">
+                           className="bg-gray-900 h-18 w-100 rounded-2xl text-gray-300 text-3xl font-semibold shadow-xs shadow-gray-300  hover:bg-stone-900 hover:shadow-xs hover:scale-101 hover:text-white">
                               Add a new subject
                      </button>
                   </div>  
@@ -241,10 +241,10 @@ export function DashBoard () {
                            whileInView={{ opacity: 1, scale: 1 }}
                            transition={{ duration: 0.4 }}
                            viewport={{once:true}}
-                           className="bg-gray-400/40 h-160 w-180 rounded-3xl mt-8 border-2 border-gray-400 mb-50 flex flex-col">
+                           className="bg-gray-400/40 h-160 w-180 rounded-4xl mt-8 shadow-sm shadow-white mb-50 flex flex-col">
                            
                               <div className="flex justify-between items-center mt-6">
-                                    <div className="bg-gray-900 border-2 border-gray-400 h-16 rounded-2xl ml-6 flex items-center"> 
+                                    <div className="bg-gray-900 shadow-sm shadow-gray-400 h-16 rounded-2xl ml-6 flex items-center"> 
                                        {existingDivData.map((m) => (
                                           <div className="text-white text-3xl font-semibold ml-4 mr-4 mb-2">{m.name}</div>
                                              ))}
@@ -253,7 +253,7 @@ export function DashBoard () {
                                     onClick={ () => {
                                        setexistingDiv(false);
                                     }}
-                                    className="bg-white text-gray-700 text-md font-bold h-9 w-18 rounded-xl border-2 border-gray-500 hover:bg-red-500 hover:text-white mr-6 hover:border-white">
+                                    className="bg-white text-gray-700 text-md font-bold h-9 w-18 rounded-xl  hover:-translate-y-0.5 hover:bg-red-500 hover:text-white mr-6 hover:border-white">
                                     Close </button>
                               </div>
 

@@ -70,22 +70,22 @@ export function Login () {
 
 
          <main className="flex flex-2 pt-40">
-            <div className="border border-2 border-cyan-950 p-20 rounded-xl mx-auto w-170 bg-gray-950">
-                <div>
-                    <h1 className="text-gray-200 text-4xl font-bold text-center"> Sign in</h1>
-                    <div className=" mt-10 shadow-sm shadow-cyan-950 p-5 rounded-xl hover:bg-stone-800"><input id="name"   className="text-white bg-transparent border-none outline-none"  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
-                    <div className=" mt-10 shadow-sm shadow-cyan-950 p-5 rounded-xl hover:bg-stone-800"><input id="password"  className="text-white bg-transparent border-none outline-none" type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
-                    <div className=" mt-10 shadow-sm shadow-cyan-950 p-3 rounded-xl w-40 mx-auto text-gray-200 text-center font-semibold text-xl hover:bg-stone-800">
-                    <button  onClick={ async () => {
-                        const response = await axios.post("http://localhost:4000/signin" ,{
-                            name : userName ,
-                            password : password
-                        })
-                        localStorage.setItem("token", response.data.token);
-                        navigate('/DashBoard')
-                    }}
-                     >
-                        Login</button>
+            <div className="shadow-md shadow-gray-800  p-20 rounded-xl mx-auto w-170 bg-gray-200">
+                <div className="flex flex-col items-center">
+                    <h1 className="bg-blue-600 text-white w-50 h-16 text-4xl font-bold text-center mb-10 flex justify-center p-2 shadow-sm shadow-cyan-950 rounded-xl"> Sign in</h1>
+                    <div className=" mt-10 shadow-sm shadow-cyan-950 p-5 rounded-xl hover:bg-stone-300 w-140"><input id="name"   className="text-cyan-950 bg-transparent border-none outline-none"  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
+                    <div className=" mt-10 shadow-sm shadow-cyan-950 p-5 rounded-xl hover:bg-stone-300 w-140"><input id="password"  className="text-cyan-950 bg-transparent border-none outline-none " type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
+                    <div className=" mt-10 shadow-sm shadow-cyan-950 p-4 rounded-xl text-white text-center bg-blue-600 font-bold text-2xl hover:bg-blue-800  hover:-translate-y-0.5 w-140">
+                      <button  onClick={ async () => {
+                          const response = await axios.post("http://localhost:4000/signin" ,{
+                              name : userName ,
+                              password : password
+                          })
+                          localStorage.setItem("token", response.data.token);
+                          navigate('/DashBoard')
+                      }}
+                      >
+                          Login</button>
                   </div>
                 </div>
             </div>
