@@ -93,7 +93,7 @@ function Calendar() {
   return (  
     <>
 
-          <div className="bg-gray-300  ml-6 rounded-lg shadow p-4 absolute w-140 h-70 ">
+          <div className="bg-gray-300  ml-6 rounded-lg shadow p-4 w-150">
 
             <div className="flex justify-between items-center mb-2 ">
               <div>
@@ -139,7 +139,7 @@ function Calendar() {
             {/* Days */}
             <div className="flex flex-wrap mb-2 ">
               {DAYS.map((day) => (
-                <div key={day} className="w-[14.28%] text-center text-xs">
+                <div key={day} className="w-[14.28%] text-center text-sm">
                   {day}
                 </div>
               ))}
@@ -152,10 +152,10 @@ function Calendar() {
               ))}
 
               {noOfDays.map((date) => (
-                <div key={date} className="w-[14.28%] p-1">
+                <div key={date} className="w-[14.28%] p-1 ">
                   <div
                     onClick={() => getDateValue(date)}
-                    className={`text-center text-sm rounded-full cursor-pointer ${
+                    className={`text-sm rounded-sm h-12  flex justify-center items-center cursor-pointer bg-red-500 ${
                       isToday(date)
                         ? "bg-indigo-200"
                         : isSelectedDate(date)

@@ -127,13 +127,13 @@ export function DashBoard () {
                         <>
                         <div className="flex h-20 w-100 ">
                            <div className="flex p-2">
-                              <div className="bg-zinc-700 text-black font-semibold h-15 w-15 ml-5 p-4 text-xl border border-gray-600 border border-l-1 border-t-1 border-b-1 text-center rounded-l-lg">
+                              <div className="bg-zinc-700 text-black font-semibold h-15 w-15 ml-5 p-4 text-xl shadow-sm shadow-black text-center rounded-l-lg">
                                  {index + 1}</div>
                               <div onClick={()=>{
                                  setexistingDiv(true);
                                  setexistingDivData([m]);
                               }} 
-                              className=" relative grid items-center group bg-gray-900 text-gray-400 h-15 w-80 p-4 text-xl border border-gray-600 border-1 rounded-r-4xl hover:cursor-pointer  hover:bg-stone-900 hover:text-white">
+                              className=" relative grid items-center group bg-gray-900 text-gray-400 h-15 w-80 p-4 text-xl shadow-lg shadow-black rounded-r-4xl hover:cursor-pointer  hover:bg-stone-900 hover:text-white">
                                  {m.name}
                                  <div className="absolute opacity-0 group-hover:opacity-100 bg-gray-800 text-gray-300 text-sm  p-2 mt-10 w-20 rounded-xl ml-30 transition duration-800">
                                        Click here to edit
@@ -160,7 +160,7 @@ export function DashBoard () {
                      <button onClick={ () => {
                         setshowInput(true)
                            }}
-                           className="bg-gray-900 h-18 w-100 rounded-2xl text-gray-300 text-3xl font-semibold shadow-xs shadow-gray-300  hover:bg-stone-900 hover:shadow-xs hover:scale-101 hover:text-white">
+                           className="bg-gray-900 h-18 w-100 rounded-2xl text-gray-300 text-3xl font-semibold shadow-sm shadow-gray-500  hover:bg-stone-900 hover:shadow-xs hover:scale-101 hover:text-white">
                               Add a new subject
                      </button>
                   </div>  
@@ -241,14 +241,19 @@ export function DashBoard () {
                            whileInView={{ opacity: 1, scale: 1 }}
                            transition={{ duration: 0.4 }}
                            viewport={{once:true}}
-                           className="bg-gray-400/40 h-160 w-180 rounded-4xl mt-8 shadow-sm shadow-white mb-50 flex flex-col">
+                           className="bg-gray-400/40 w-180 rounded-4xl mt-8 shadow-sm shadow-white  mb-50">
                            
-                              <div className="flex justify-between items-center mt-6">
+                           <div className="flex flex-col h-full w-full gap-10">
+
+  
+
+
+                              <div className="flex justify-between items-center mt-6 ">
                                     <div className="bg-gray-900 shadow-sm shadow-gray-400 h-16 rounded-2xl ml-6 flex items-center"> 
                                        {existingDivData.map((m) => (
                                           <div className="text-white text-3xl font-semibold ml-4 mr-4 mb-2">{m.name}</div>
                                              ))}
-                                          </div>
+                                     </div>
                                     <button
                                     onClick={ () => {
                                        setexistingDiv(false);
@@ -259,53 +264,55 @@ export function DashBoard () {
 
 
 
-                             <div>
-                                <Calendar/>
+                             <div className="bg-blue-600 w-full h-full relative">
+                               <Calendar/>
                              </div>
-                             
-                              
 
-                            
-                              <div className="group h-12 w-24 bg-gray-900 rounded-3xl border-2 border-yellow-700 hover:bg-red-500 hover:border-white flex">
-                                    <button onClick={ async () => {
-                                       const response = await axios.delete("http://localhost:4000/subject" , {
-                                          data : {
-                                             subjectId : existingDivData[0].Id
-                                          },
-                                          headers : {
-                                             token : localStorage.getItem("token")
+
+
+
+                             <div className="bg-red-600 mb-10 flex justify-end">
+                                 <div className="group h-12 w-24 bg-gray-900 rounded-3xl border-2 border-yellow-700 hover:bg-red-600 hover:border-white flex">
+                                       <button onClick={ async () => {
+                                          const response = await axios.delete("http://localhost:4000/subject" , {
+                                             data : {
+                                                subjectId : existingDivData[0].Id
+                                             },
+                                             headers : {
+                                                token : localStorage.getItem("token")
+                                             }
+                                          })
+                                          if(response){
+                                             setexistingDiv(false)
                                           }
-                                       })
-                                       if(response){
-                                          setexistingDiv(false)
-                                       }
-                                    
-                                       const res =  await axios.get("http://localhost:4000/subject" , 
-                                                { headers : {
-                                                   token : localStorage.getItem("token")
-                                                }}
-                                             )
-                                          setshowsub(res.data.subjects)
-                                          
-                                    }}
-                                    className="h-full w-full text-xl font-semibold text-gray-200 hover:text-white"
-                                    >Delete
-                                    </button>
-                                    <div className="absolute bg-gray-800 text-gray-300 w-28 text-sm p-2 rounded-lg ml-20 mt-6 opacity-0  group-hover:opacity-100 transition duration-600 pointer-events-none">
-                                       Click to delete this subject
-                                    </div>
-                              </div>
+                                       
+                                          const res =  await axios.get("http://localhost:4000/subject" , 
+                                                   { headers : {
+                                                      token : localStorage.getItem("token")
+                                                   }}
+                                                )
+                                             setshowsub(res.data.subjects)
+                                             
+                                       }}
+                                       className="h-full w-full text-xl font-semibold text-gray-200 hover:text-white"
+                                       >Delete
+                                       </button>
+                                       <div className="absolute bg-gray-800 text-gray-300 w-28 text-sm p-2 rounded-lg ml-20 mt-6 opacity-0  group-hover:opacity-100 transition duration-600 pointer-events-none">
+                                          Click to delete this subject
+                                       </div>
+                                 </div> 
+                             </div>
 
 
-                            
-                           
 
+
+                             </div>
                            </motion.div>
+                           
                             )    
                         }
 
                         </div>
-
             </div>
             
       </div>
