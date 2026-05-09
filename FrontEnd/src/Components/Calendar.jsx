@@ -139,8 +139,8 @@ function Calendar() {
               </div>
             </div>
 
-X
-            {/* Days */}
+{/* testting */}
+            {/* Days  */}
             <div className="flex flex-wrap mb-2 ">
               {DAYS.map((day) => (
                 <div key={day} className="w-[14.28%] text-center text-sm">
