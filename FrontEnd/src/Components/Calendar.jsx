@@ -139,7 +139,6 @@ function Calendar() {
               </div>
             </div>
 
-{/* testting */}
             {/* Days  */}
             <div className="flex flex-wrap mb-2 ">
               {DAYS.map((day) => (
