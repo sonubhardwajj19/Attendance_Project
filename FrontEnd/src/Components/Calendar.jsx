@@ -1,9 +1,5 @@
 import { useState , useEffect} from 'react';
 import '../App.css'
-import { applyTreeDeltas, defaultValueTypes } from 'framer-motion';
-import { div } from 'framer-motion/client';
-
-
 
 function Calendar() {
 	const MONTH_NAMES = [
@@ -96,10 +92,33 @@ function Calendar() {
   return (  
     <>
 
-          <div className="bg-gray-300  ml-6 rounded-lg shadow p-4 w-150">
+    {/* <div className='absolute ml-20 w-100 h-80 bg-yellow-500 p-2'>hello from record div
+      
+                          <button onClick={()=> {
+                            setrecordDiv(false)
+                          }}
+                          className='bg-white'>Close</button>
+                        </div> */}
 
+          { recordDiv && ( 
+                      <>
+                         <div className='absolute h-full w-full backdrop-blur-sm'>
+                            <div className='h-90 w-120 bg-blue-500 mx-auto mt-10 rounded-2xl p-4 shadow-lg shadow-black'>
+                               hello
+
+                               <button onClick={()=> {
+                                 setrecordDiv(false)
+                               }} className='bg-white'>Close</button>
+                            </div>
+                         </div>
+                      </>
+                    )}
+          <div className="bg-gray-300 ml-6 rounded-lg shadow p-4 w-150">
+                 
             <div className="flex justify-between items-center mb-2 ">
-              <div>
+
+              
+              <div> 
                 <span className="text-lg font-bold text-gray-800 ">
                   {MONTH_NAMES[month]}
                 </span>
@@ -107,9 +126,10 @@ function Calendar() {
                   {year}
                 </span>
               </div>
-
+               
               <div>
                 <button
+        
                   onClick={() => {
                     if (month === 0) {
                       setYear(year - 1);
@@ -147,7 +167,7 @@ function Calendar() {
                 </div>
               ))}
             </div>
-
+ 
 
             {/* Dates */}
             <div className="flex flex-wrap">
@@ -158,7 +178,8 @@ function Calendar() {
               {noOfDays.map((date) => (
                 <div key={date} className="w-[14.28%] p-1 ">
                   <div
-                    onClick={() => {setrecordDiv(true)
+                    onClick={() => {
+                      setrecordDiv(true)
                       getDateValue(date) 
                     }}
                     className={`text-sm rounded-sm h-12  flex justify-center items-center cursor-pointer bg-red-500 ${
@@ -175,8 +196,9 @@ function Calendar() {
                   </div>
                 </div>
               ))}
+              </div>
+                 
             </div>
-          </div>
     </>
   )
 }

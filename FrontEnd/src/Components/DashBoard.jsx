@@ -171,39 +171,54 @@ export function DashBoard () {
                         initial={{opacity:0 , scale:0.5}}
                         whileInView={{opacity:1 , scale:1}}
                         transition={{duration:.3 }}
-                        className="mt-12 mb-20 bg-stone-600/50 h-40 w-180 rounded-3xl p-4 border-2 border-gray-500 justify-items-center flex gap-10 items-center hover:scale-101">
-                              <div><input type="text"  placeholder="Enter the name of subject" maxLength="30" onChange={ (e) => setcreateSubject(e.target.value)}
-                              className="bg-zinc-900/70 h-17 w-128 rounded-3xl border-2 border-gray-800 text-xl font-semibold text-gray-400 p-5 hover:bg-stone-700 hover:text-white hover:border-gray-900 outline-none" /></div>
-                              <div><button  onClick={ async () => {
-                                       const res = await axios.post("http://localhost:4000/subject" ,
-                                          {
-                                             subjectName : createSubject
-                                          },
-                                          {headers : {
+                        className="mt-12 mb-20 bg-stone-600/50 h-40 w-180 rounded-3xl p-2 shadow-sm shadow-white justify-items-center flex flex-col hover:scale-101">
+                             <div className="flex justify-end p-1">
+                              <button 
+                               onClick={()=> {
+                                 setshowInput(false)
+                               }}
+                               className="bg-white rounded-xl hover:bg-red-500 hover:text-white">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="red" class="size-5 hover:fill-white">
+                                   <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+                                 </svg>
+                              </button>
+                             </div>
+
+                             <div className="flex items-center gap-14 p-3">
+                                 <div><input type="text"  placeholder="Enter the name of subject" maxLength="30" onChange={ (e) => setcreateSubject(e.target.value)}
+                                 className="bg-zinc-900/70 h-17 w-120 rounded-3xl shadow-sm shadow-black text-xl font-semibold text-gray-400 p-5 hover:bg-stone-700 hover:text-white hover:border-gray-900 outline-none" /></div>
+                                 <div>
+                                    <button  onClick={ async () => {
+                                          const res = await axios.post("http://localhost:4000/subject" ,
+                                             {
+                                                subjectName : createSubject
+                                             },
+                                             {headers : {
+                                                token : localStorage.getItem("token")
+                                             }} 
+                                       )
+
+                                       if(res) {
+                                          setshowsuccess(true);
+                                          setSuccessmsg( prev => [...prev ,"Subject added !"] )
+                                       }
+
+                                       const response =  await axios.get("http://localhost:4000/subject" , 
+                                          { headers : {
                                              token : localStorage.getItem("token")
-                                          }} 
-                                    )
+                                          }}
+                                       )
+                                          setshowsub(response.data.subjects);
 
-                                    if(res) {
-                                       setshowsuccess(true);
-                                       setSuccessmsg( prev => [...prev ,"Subject added !"] )
-                                    }
-
-                                    const response =  await axios.get("http://localhost:4000/subject" , 
-                                       { headers : {
-                                          token : localStorage.getItem("token")
-                                       }}
-                                    )
-                                       setshowsub(response.data.subjects);
-
-                                    setTimeout(() => {
-                                       setshowsuccess(false);
-                                       setSuccessmsg([]);
-                                    }, 4000);   
-                                 
-                                 }}
-                                 className="bg-gray-900 w-34 h-13 text-xl text-yellow-700 font-semibold border-1 rounded-2xl border-yellow-900 hover:bg-stone-900 hover:text-gray-300">
-                                 Add subject</button>
+                                       setTimeout(() => {
+                                          setshowsuccess(false);
+                                          setSuccessmsg([]);
+                                       }, 4000);   
+                                    
+                                    }}
+                                    className="bg-gray-900 w-34 h-13 text-xl text-yellow-700 font-semibold  shadow-sm shadow-black rounded-2xl  hover:bg-stone-900 hover:text-gray-300">
+                                    Add subject</button>
+                                 </div>
                               </div>
                         </motion.div>
                         
