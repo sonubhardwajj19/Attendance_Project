@@ -7,7 +7,7 @@ const z = require("zod");
 const { authMiddleware } = require("./middleware");
 
 const pool = new Pool ({
-    connectionString : "postgresql://neondb_owner:npg_CbXhQBn6xAz4@ep-shy-lake-a8hp95es-pooler.eastus2.azure.neon.tech/neondb?sslmode=require&channel_binding=require"
+    connectionString : ""
 })
 
 const app = express();
