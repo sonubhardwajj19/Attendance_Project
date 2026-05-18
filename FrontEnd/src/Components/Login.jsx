@@ -71,11 +71,11 @@ export function Login () {
 
 
          <main className="flex flex-2 pt-40">
-            <div className="shadow-xl p-20 rounded-xl mx-auto w-160 bg-gray-200">
+            <div className="shadow-xl p-20 rounded-xl mx-auto w-140 bg-gray-200">
                 <div className="flex flex-col items-center">
-                    <h1 className="bg-blue-600 text-white w-50 h-16 text-4xl font-bold text-center mb-10 flex justify-center p-2 shadow-md shadow-blue-800 rounded-xl"> Sign in</h1>
-                    <div className=" mt-10 shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-140"><input id="name"   className="text-cyan-950 bg-transparent border-none outline-none"  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
-                    <div className=" mt-10 shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-140"><input id="password"  className="text-cyan-950 bg-transparent border-none outline-none " type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
+                    <h1 className="bg-blue-600 text-white w-50 h-16 text-4xl font-bold text-center mb-5 flex justify-center p-2 shadow-md shadow-blue-800 rounded-xl"> Sign in</h1>
+                    <div className=" mt-10 shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-120"><input id="name"   className="text-cyan-950 bg-transparent border-none outline-none"  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
+                    <div className=" mt-10 shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-120"><input id="password"  className="text-cyan-950 bg-transparent border-none outline-none " type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
                     <div    onClick={ async () => {
                           const response = await axios.post("http://localhost:4000/signin" ,{
                               name : userName ,
@@ -84,7 +84,7 @@ export function Login () {
                           localStorage.setItem("token", response.data.token);
                           navigate('/DashBoard')
                       }}
-                     className=" mt-10 shadow-md shadow-cyan-950 p-4 rounded-xl text-white text-center bg-blue-600 font-bold text-2xl hover:bg-blue-800 hover:cursor-pointer hover:-translate-y-0.5 w-140">
+                     className=" mt-10 shadow-md shadow-cyan-950 p-4 rounded-xl text-white text-center bg-blue-600 font-bold text-2xl hover:bg-blue-800 hover:cursor-pointer hover:-translate-y-0.5 w-120">
                         Login
                   </div>
                 </div>

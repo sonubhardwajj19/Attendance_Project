@@ -104,8 +104,6 @@ function Calendar() {
                       <>
                          <div className='absolute h-full w-full backdrop-blur-sm'>
                             <div className='h-90 w-120 bg-blue-500 mx-auto mt-10 rounded-2xl p-4 shadow-lg shadow-black'>
-                               hello
-
                                <button onClick={()=> {
                                  setrecordDiv(false)
                                }} className='bg-white'>Close</button>
