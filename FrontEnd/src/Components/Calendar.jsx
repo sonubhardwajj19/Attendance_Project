@@ -98,7 +98,10 @@ function Calendar() {
                             setrecordDiv(false)
                           }}
                           className='bg-white'>Close</button>
-                        </div> */}
+                        </div> 
+                        
+                        
+                        comiity k liye*/}
 
           { recordDiv && ( 
                       <>
