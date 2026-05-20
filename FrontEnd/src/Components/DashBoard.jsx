@@ -286,7 +286,7 @@ export function DashBoard () {
 
 
 
-                             <div className="bg-red-600 mb-10 flex justify-end">
+                             <div className="mb-10 flex justify-end">
                                  <div className="group h-12 w-24 bg-gray-900 rounded-3xl border-2 border-yellow-700 hover:bg-red-600 hover:border-white flex">
                                        <button onClick={ async () => {
                                           const response = await axios.delete("http://localhost:4000/subject" , {
