@@ -105,11 +105,24 @@ function Calendar() {
 
           { recordDiv && ( 
                       <>
-                         <div className='absolute h-full w-full backdrop-blur-sm shadow-lg shadow-black'>
-                            <div className='h-90 w-120 bg-blue-500 mx-auto mt-10 rounded-2xl p-4 shadow-lg shadow-black'>
+                         <div className='absolute h-full w-full backdrop-blur-sm shadow-lg shadow-black flex justify-center items-center'>
+                            <div className='h-80 w-100 bg-blue-500 mx-auto rounded-2xl p-4 shadow-lg shadow-black'>
+
                                <button onClick={()=> {
                                  setrecordDiv(false)
-                               }} className='bg-white'>Close</button>
+                               }} className='bg-white rounded-xl hover:bg-red-500 hover:text-white flex ml-auto shadow-sm shadow-black'>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="red" class="size-5 hover:fill-white">
+                                  <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+                                </svg>
+                               </button>
+
+                               <div className='flex flex-col gap-5 mt-5 justify-center items-center p-2'>
+                                  <div className='bg-green-500 h-25 w-50 p-3 text-2xl flex justify-center items-center text-white rounded-xl shadow-lg shadow-black hover:-translate-y-0.5 hover:shadow-sm border border-green-900'>Mark as Present</div>
+                                  <div className='bg-red-500 h-25 w-50 p-3 text-2xl flex justify-center items-center text-white rounded-xl shadow-lg shadow-black hover:-translate-y-0.5 hover:shadow-sm border border-red-900'>Mark as Absent</div>
+                               </div>
+                               
+
+
                             </div>
                          </div>
                       </>

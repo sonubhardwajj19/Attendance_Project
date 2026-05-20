@@ -264,7 +264,7 @@ export function DashBoard () {
 
 
                               <div className="flex justify-between items-center mt-6 ">
-                                    <div className="bg-gray-900 shadow-sm shadow-gray-400 h-16 rounded-2xl ml-6 flex items-center"> 
+                                    <div className="bg-gray-900 shadow-lg shadow-black hover:shadow-sm border border-gray-600 h-16 rounded-2xl ml-6 flex items-center "> 
                                        {existingDivData.map((m) => (
                                           <div className="text-white text-3xl font-semibold ml-4 mr-4 mb-2">{m.name}</div>
                                              ))}
@@ -273,7 +273,7 @@ export function DashBoard () {
                                     onClick={ () => {
                                        setexistingDiv(false);
                                     }}
-                                    className="bg-white text-gray-700 text-md font-bold h-9 w-18 rounded-xl  hover:-translate-y-0.5 hover:bg-red-500 hover:text-white mr-6 hover:border-white">
+                                    className="bg-white text-gray-700 text-md font-bold h-9 w-18 rounded-xl  hover:-translate-y-0.5 hover:bg-red-500 hover:text-white mr-6 shadow-lg shadow-black hover:shadow-sm border border-black">
                                     Close </button>
                               </div>
 
@@ -286,8 +286,8 @@ export function DashBoard () {
 
 
 
-                             <div className="mb-10 flex justify-end">
-                                 <div className="group h-12 w-24 bg-gray-900 rounded-3xl border-2 border-yellow-700 hover:bg-red-600 hover:border-white flex">
+                             <div className="mb-10 mr-5 flex justify-end">
+                                 <div className="group h-12 w-24 bg-gray-900 rounded-3xl shadow-lg shadow-black hover:bg-red-600 hover:border-white flex hover:shadow-sm border border-gray-700">
                                        <button onClick={ async () => {
                                           const response = await axios.delete("http://localhost:4000/subject" , {
                                              data : {
