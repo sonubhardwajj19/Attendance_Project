@@ -94,8 +94,8 @@ function Calendar() {
 
           { recordDiv && ( 
                       <>
-                         <div className='absolute h-full w-full backdrop-blur-sm shadow-lg shadow-black flex justify-center items-center'>
-                            <div className='h-80 w-100 bg-gray-500 border border-gray-400 mx-auto rounded-2xl p-4 shadow-lg shadow-black'>
+                         <div className='absolute h-full w-full backdrop-blur-sm shadow-lg  shadow-black flex justify-center items-center'>
+                            <div className='h-80 w-100 bg-gray-600 border border-gray-400 mx-auto rounded-2xl p-4 shadow-lg shadow-black'>
 
                                <button onClick={()=> {
                                  setrecordDiv(false)
@@ -118,17 +118,17 @@ function Calendar() {
             )}
 
 
-
-          <div className="bg-gray-500 ml-6 rounded-lg shadow flex flex-col p-4 w-150">
+  <div className="flex justify-center">
+          <div className="bg-gray-800 rounded-lg flex flex-col p-4 w-150 border-1 shadow-xl shadow-black">
                  
             <div className="flex justify-between items-center mb-2 ">
 
               
               <div> 
-                <span className="text-lg font-bold text-gray-800 ">
+                <span className="text-3xl font-semibold text-gray-800 text-white">
                   {MONTH_NAMES[month]}
                 </span>
-                <span className="ml-1 text-lg text-gray-600">
+                <span className="ml-3 text-gray-200">
                   {year}
                 </span>
               </div>
@@ -146,7 +146,10 @@ function Calendar() {
                   }}
                   className="p-1"
                 >
-                  ◀
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-6 hover:fill-white">
+                     <path  d="M21 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061A1.125 1.125 0 0 1 21 8.689v8.122ZM11.25 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061a1.125 1.125 0 0 1 1.683.977v8.122Z" />
+                  </svg>
+
                 </button>
 
                 <button
@@ -160,7 +163,11 @@ function Calendar() {
                   }}
                   className="p-1"
                 >
-                  ▶
+                  
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-6 hover:fill-white">
+                     <path d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z" />
+                  </svg>
+
                 </button>
               </div>
             </div>
@@ -168,7 +175,7 @@ function Calendar() {
             {/* Days  */}
             <div className="flex flex-wrap mb-2 ">
               {DAYS.map((day) => (
-                <div key={day} className="w-[14.28%] text-center text-sm">
+                <div key={day} className="w-[14.28%] text-center text-yellow-600">
                   {day}
                 </div>
               ))}
@@ -182,18 +189,18 @@ function Calendar() {
               ))}
 
               {noOfDays.map((date) => (
-                <div key={date} className="w-[14.28%] p-1 ">
+                <div key={date} className="w-[14.28%] p-1 text-gray-400">
                   <div
                     onClick={() => {
                       setrecordDiv(true)
                       getDateValue(date) 
                     }}
-                    className={`text-sm rounded-sm h-12 flex justify-center items-center cursor-pointer bg-gray-300 shadow-lg shadow-black hover:shadow-none ${
+                    className={`text-sm rounded-sm h-12 flex justify-center items-center cursor-pointer  shadow-sm shadow-black hover:text-black hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 ${
                       isToday(date)
-                        ? "bg-indigo-200"
+                        ? "bg-stone-600"
                         : isSelectedDate(date)
                         ? "text-white"
-                        : "hover:bg-white"
+                        : "hover:bg-gray-400"
                     }`}
                   >
                     {date}
@@ -204,6 +211,7 @@ function Calendar() {
               ))}
               </div>
                  
+            </div>
             </div>
     </>
   )

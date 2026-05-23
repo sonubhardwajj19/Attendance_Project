@@ -256,8 +256,9 @@ export function DashBoard () {
                            whileInView={{ opacity: 1, scale: 1 }}
                            transition={{ duration: 0.4 }}
                            viewport={{once:true}}
-                           className="bg-gray-400/40 w-180 rounded-4xl mt-8 shadow-sm shadow-white  mb-50">
+                           className="bg-gray-600 w-180 rounded-4xl mt-8 shadow-sm shadow-white  mb-50">
                            
+
                            <div className="flex flex-col h-full w-full gap-10">
 
   
