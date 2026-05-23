@@ -92,21 +92,10 @@ function Calendar() {
   return (  
     <>
 
-    {/* <div className='absolute ml-20 w-100 h-80 bg-yellow-500 p-2'>hello from record div
-      
-                          <button onClick={()=> {
-                            setrecordDiv(false)
-                          }}
-                          className='bg-white'>Close</button>
-                        </div> 
-                        
-                        
-                      */}
-
           { recordDiv && ( 
                       <>
                          <div className='absolute h-full w-full backdrop-blur-sm shadow-lg shadow-black flex justify-center items-center'>
-                            <div className='h-80 w-100 bg-blue-500 mx-auto rounded-2xl p-4 shadow-lg shadow-black'>
+                            <div className='h-80 w-100 bg-gray-500 border border-gray-400 mx-auto rounded-2xl p-4 shadow-lg shadow-black'>
 
                                <button onClick={()=> {
                                  setrecordDiv(false)
@@ -117,8 +106,8 @@ function Calendar() {
                                </button>
 
                                <div className='flex flex-col gap-5 mt-5 justify-center items-center p-2'>
-                                  <div className='bg-green-500 h-25 w-50 p-3 text-2xl flex justify-center items-center text-white rounded-xl shadow-lg shadow-black hover:-translate-y-0.5 hover:shadow-sm border border-green-900'>Mark as Present</div>
-                                  <div className='bg-red-500 h-25 w-50 p-3 text-2xl flex justify-center items-center text-white rounded-xl shadow-lg shadow-black hover:-translate-y-0.5 hover:shadow-sm border border-red-900'>Mark as Absent</div>
+                                  <div className='bg-green-500 h-25 w-50 p-3 text-2xl flex justify-center items-center text-white rounded-xl shadow-lg shadow-black hover:bg-green-700 hover:-translate-y-0.5 hover:shadow-sm border border-green-900'>Mark as Present</div>
+                                  <div className='bg-red-500 h-25 w-50 p-3 text-2xl flex justify-center items-center text-white rounded-xl shadow-lg shadow-black hover:bg-red-700 hover:-translate-y-0.5 hover:shadow-sm border border-red-900'>Mark as Absent</div>
                                </div>
                                
 
@@ -126,8 +115,11 @@ function Calendar() {
                             </div>
                          </div>
                       </>
-                    )}
-          <div className="bg-gray-300 ml-6 rounded-lg shadow p-4 w-150">
+            )}
+
+
+
+          <div className="bg-gray-500 ml-6 rounded-lg shadow flex flex-col p-4 w-150">
                  
             <div className="flex justify-between items-center mb-2 ">
 
@@ -196,12 +188,12 @@ function Calendar() {
                       setrecordDiv(true)
                       getDateValue(date) 
                     }}
-                    className={`text-sm rounded-sm h-12  flex justify-center items-center cursor-pointer bg-red-500 ${
+                    className={`text-sm rounded-sm h-12 flex justify-center items-center cursor-pointer bg-gray-300 shadow-lg shadow-black hover:shadow-none ${
                       isToday(date)
                         ? "bg-indigo-200"
                         : isSelectedDate(date)
                         ? "text-white"
-                        : "hover:bg-gray-600"
+                        : "hover:bg-white"
                     }`}
                   >
                     {date}

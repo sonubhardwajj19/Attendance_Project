@@ -279,7 +279,7 @@ export function DashBoard () {
 
 
 
-                             <div className="bg-blue-600 w-full h-full relative">
+                             <div className="relative w-full h-full">
                                <Calendar/>
                              </div>
 
