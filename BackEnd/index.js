@@ -5,9 +5,11 @@ const bcrypt = require("bcrypt");
 const {Pool} = require("pg");
 const z = require("zod");
 const { authMiddleware } = require("./middleware");
+require('dotenv').config();
+
 
 const pool = new Pool ({
-    connectionString : ""
+    connectionString : process.env.DATABASE_URL
 })
 
 const app = express();

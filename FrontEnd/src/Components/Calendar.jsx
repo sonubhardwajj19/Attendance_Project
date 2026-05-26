@@ -195,7 +195,7 @@ function Calendar() {
                       setrecordDiv(true)
                       getDateValue(date) 
                     }}
-                    className={`text-sm rounded-sm h-12 flex justify-center items-center cursor-pointer  shadow-sm shadow-black hover:text-black hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 ${
+                    className={`text-sm rounded-sm h-12 flex justify-center items-center cursor-pointer shadow-sm shadow-black hover:text-black hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 ${
                       isToday(date)
                         ? "bg-stone-600"
                         : isSelectedDate(date)
