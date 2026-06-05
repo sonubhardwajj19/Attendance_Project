@@ -1,16 +1,14 @@
-import { useState } from 'react';
 import './App.css';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import {SignUp} from './Components/Signup'
-import { Login } from './Components/Login'
-import { LandingPage } from './Components/LandingPage';
-import { DashBoard } from './Components/DashBoard';
+import {SignUp} from './screens/Signup'
+import { Login } from './screens/Login'
+import { LandingPage } from './screens/LandingPage';
+import { DashBoard } from './screens/DashBoard';
 import { Policy } from './Components/Policy';
 import { Conditions } from './Components/Condition';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>

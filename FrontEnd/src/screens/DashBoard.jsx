@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom"
 import {useEffect, useState} from "react"
 import axios from "axios";
 import { motion } from "framer-motion";
-import Calendar from "./Calendar";
+import Calendar from "../Components/Calendar";
 
 import "react-calendar/dist/Calendar.css";
 
 
 export function DashBoard () {
-  const navigate = useNavigate();
   const [showInput ,setshowInput] = useState(false);
   const [createSubject , setcreateSubject] = useState("");
   const [showsub , setshowsub] = useState([]);
