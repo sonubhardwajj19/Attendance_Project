@@ -93,7 +93,7 @@ export function DashBoard () {
 
       <div className="flex flex-1 pt-20">
 
-            <div className="pt-4 w-120 bg-gray-950 border-r-2 border-t-2 border-gray-500 rounded-t-lg items-center min-h-screen">
+            <div className="pt-4 w-[60vw] bg-gray-950 border-r-2 border-t-2 border-gray-500 rounded-t-lg items-center min-h-screen">
                <div className="w-full h-12 text-center text-yellow-700 border-b-1 border-gray-700 rounded-xl text-xl font-semibold flex justify-between">
                   <span className="ml-7">Existing subjects</span>
                      <button onClick={async() => {
@@ -121,25 +121,35 @@ export function DashBoard () {
  
 
 
-               <div  className="flex mt-2 ">
-                  <div className="flex flex-col gap-5">
+               <div  className="flex flex-col mt-4">
+                  <div className="flex gap-20 mb-2 ml-60"> <span className="text-yellow-700 mr-70">Subjects</span>  <span className="text-yellow-700">Present</span> <span className="text-yellow-700">Absent</span></div>
+                  <div className="flex flex-col gap-4">
                      {showsub.map((m,index) => (
                         <>
-                        <div className="flex h-20 w-100 ">
+                        <div className="flex h-20">
                            <div className="flex p-2">
                               <div className="bg-zinc-700 text-black font-semibold h-15 w-15 ml-5 p-4 text-xl shadow-sm shadow-black text-center rounded-l-lg">
-                                 {index + 1}</div>
+                                 {index + 1}
+                              </div>
                               <div onClick={()=>{
                                  setexistingDiv(true);
                                  setexistingDivData([m]);
                               }} 
-                              className=" relative grid items-center group bg-gray-900 text-gray-400 h-15 w-80 p-4 text-xl shadow-lg shadow-black rounded-r-4xl hover:cursor-pointer  hover:bg-stone-900 hover:text-white">
+                              className=" relative grid items-center group bg-gray-900 text-gray-400 h-15 w-120 p-4 text-xl shadow-lg shadow-black rounded-r-4xl hover:cursor-pointer  hover:bg-stone-900 hover:text-white">
                                  {m.name}
                                  <div className="absolute opacity-0 group-hover:opacity-100 bg-gray-800 text-gray-300 text-sm  p-2 mt-10 w-20 rounded-xl ml-30 transition duration-800">
                                        Click here to edit
                                  </div>
 
+                              </div >
+                              <div className="bg-zinc-700 text-black font-semibold h-15 w-18 rounded-xl  ml-20">
+                                 Present
                               </div>
+
+                              <div className="bg-zinc-700 text-black font-semibold h-15 w-18 rounded-xl  ml-15">
+                                 absent
+                              </div>
+
                            </div>
                         </div>
                         </>
@@ -171,7 +181,7 @@ export function DashBoard () {
                         initial={{opacity:0 , scale:0.5}}
                         whileInView={{opacity:1 , scale:1}}
                         transition={{duration:.3 }}
-                        className="mt-12 mb-20 bg-stone-600/50 h-40 w-180 rounded-3xl p-2 shadow-sm shadow-white justify-items-center flex flex-col hover:scale-101">
+                        className="mt-12 mb-20 bg-stone-600/50 h-40 w-[30vw] rounded-3xl p-2 shadow-sm shadow-white justify-items-center flex flex-col hover:scale-101">
                              <div className="flex justify-end p-1">
                               <button 
                                onClick={()=> {
@@ -184,9 +194,9 @@ export function DashBoard () {
                               </button>
                              </div>
 
-                             <div className="flex items-center gap-14 p-3">
+                             <div className="flex items-center gap-3 p-3">
                                  <div><input type="text"  placeholder="Enter the name of subject" maxLength="30" onChange={ (e) => setcreateSubject(e.target.value)}
-                                 className="bg-zinc-900/70 h-17 w-120 rounded-3xl shadow-sm shadow-black text-xl font-semibold text-gray-400 p-5 hover:bg-stone-700 hover:text-white hover:border-gray-900 outline-none" /></div>
+                                 className="bg-zinc-900/70 h-17 rounded-3xl shadow-sm shadow-black text-xl font-semibold text-gray-400 p-5 hover:bg-stone-700 hover:text-white hover:border-gray-900 outline-none" /></div>
                                  <div>
                                     <button  onClick={ async () => {
                                           const res = await axios.post("http://localhost:4000/subject" ,
@@ -216,7 +226,7 @@ export function DashBoard () {
                                        }, 4000);   
                                     
                                     }}
-                                    className="bg-gray-900 w-34 h-13 text-xl text-yellow-700 font-semibold  shadow-sm shadow-black rounded-2xl  hover:bg-stone-900 hover:text-gray-300">
+                                    className="bg-gray-900 w-30 h-11 text-lg text-yellow-700 font-semibold  shadow-sm shadow-black rounded-2xl  hover:bg-stone-900 hover:text-gray-300">
                                     Add subject</button>
                                  </div>
                               </div>
