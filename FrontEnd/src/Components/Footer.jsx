@@ -2,7 +2,7 @@ export function Footer () {
 
     return <>
         
-        <div id="footer" className="h-150 w-full bg-black border-y-2 border-stone-900 flex flex-col mt-60">
+        <div id="footer" className="h-150 w-full bg-black border-y-2 border-stone-900 flex flex-col">
             <div className="flex ml-50 mt-10 gap-60">
                 <div>
                 <h2 className="text-yellow-900 text-[40px] font-semibold">Attendle</h2>

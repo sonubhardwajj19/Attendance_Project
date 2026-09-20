@@ -30,12 +30,16 @@ export function Login () {
 
 
          <main className="flex flex-2 pt-40">
-            <div className="shadow-xl p-20 rounded-xl mx-auto w-140 bg-gray-200">
-                <div className="flex flex-col items-center">
-                    <h1 className="bg-blue-600 text-white w-50 h-16 text-4xl font-bold text-center mb-5 flex justify-center p-2 shadow-md shadow-blue-800 rounded-xl"> Sign in</h1>
-                    <div className=" mt-10 shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-120"><input id="name"   className="text-cyan-950 bg-transparent border-none outline-none"  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
-                    <div className=" mt-10 shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-120"><input id="password"  className="text-cyan-950 bg-transparent border-none outline-none " type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
-                    <div    onClick={ async () => {
+            <div className="shadow-xl rounded-xl w-130 p-10 mx-auto bg-gray-200">
+                <div className="flex flex-col items-center w-full">
+                    <div className="bg-blue-600 text-white w-50 h-16 text-4xl font-bold text-center flex justify-center p-2 shadow-md shadow-blue-800 rounded-xl mb-4"> Sign in</div>
+                    <div className="bg-white shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-full">
+                        <input id="name" className="text-cyan-950 bg-transparent border-none outline-none"ctype="text" placeholder="Enter username"
+                               onChange={(e) => setUserName(e.target.value)}/></div> <br/>
+                    <div className="bg-white shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-full">
+                        <input id="password" className="text-cyan-950 bg-transparent border-none outline-none " type="password" placeholder="Enter password" 
+                              onChange={(e) => setPassword(e.target.value)}/></div> <br/>
+                    <div onClick={ async () => {
                           const response = await axios.post("http://localhost:4000/signin" ,{
                               name : userName ,
                               password : password
@@ -43,7 +47,7 @@ export function Login () {
                           localStorage.setItem("token", response.data.token);
                           navigate('/DashBoard')
                       }}
-                     className=" mt-10 shadow-md shadow-cyan-950 p-4 rounded-xl text-white text-center bg-blue-600 font-bold text-2xl hover:bg-blue-800 hover:cursor-pointer hover:-translate-y-0.5 w-120">
+                     className="shadow-md shadow-cyan-950 p-4 rounded-xl text-white text-center bg-blue-600 font-bold text-2xl hover:bg-blue-800 hover:cursor-pointer hover:-translate-y-0.5 w-full">
                         Login
                   </div>
                 </div>

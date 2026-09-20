@@ -31,12 +31,12 @@ export function SignUp () {
 
 
         <main  className="pt-40 flex-1">
-            <div className="shadow-md shadow-gray-800 p-4 rounded-xl mx-auto w-140 bg-gray-200 p-10">
-                <div className="flex flex-col items-center">
-                    <h1 className="text-blue-600 w- h-16 text-4xl font-bold text-center mb-5 flex justify-center p-2 shadow-lg rounded-xl">Create account </h1>
-                    <div className=" mt-10 shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-120"><input id="name "   className="text-cyan-950 bg-transparent border-none outline-none outline-none "  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
-                    <div className=" mt-10 shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-120"><input id="email "  className="text-cyan-950 bg-transparent border-none outline-none outline-none "  type="email" placeholder="Enter email"  onChange={(e) => setEmail(e.target.value)} /></div> <br/>
-                    <div className=" mt-10 shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-120"><input id="password "  className="text-cyan-950 bg-transparent border-none outline-none outline-none" type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
+            <div className="shadow-md shadow-gray-800 rounded-xl mx-auto w-130 bg-gray-200 p-10">
+                <div className="flex flex-col items-center w-full">
+                    <h1 className="text-blue-600  h-16 text-4xl font-bold text-center mb-5 flex justify-center p-2 bg-white  rounded-xl border-2 border-blue-300">Create account </h1>
+                    <div className="bg-white shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-120"><input id="name "   className="text-cyan-950 bg-transparent border-none outline-none outline-none "  type="text" placeholder="Enter username" onChange={(e) => setUserName(e.target.value)}/></div> <br/>
+                    <div className="bg-white shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-120"><input id="email "  className="text-cyan-950 bg-transparent border-none outline-none outline-none "  type="email" placeholder="Enter email"  onChange={(e) => setEmail(e.target.value)} /></div> <br/>
+                    <div className="bg-white shadow-sm shadow-gray-400 p-5 rounded-xl hover:bg-stone-300 w-120"><input id="password "  className="text-cyan-950 bg-transparent border-none outline-none outline-none" type="password" placeholder="Enter password" onChange={(e) => setPassword(e.target.value)}/></div> <br/>
                     <div   onClick={ async () => {
                         const response = await axios.post("http://localhost:4000/signup" ,{
                             name : userName ,
@@ -45,7 +45,7 @@ export function SignUp () {
                         })
                         navigate('/Login')
                     }}
-                     className="  mt-10 shadow-md shadow-cyan-950 p-4 rounded-xl text-white text-center bg-blue-600 font-bold text-2xl hover:bg-blue-800 hover:cursor-pointer hover:-translate-y-0.5 w-120">
+                     className="shadow-md shadow-cyan-950 p-4 rounded-xl text-white text-center bg-blue-600 font-bold text-2xl hover:bg-blue-800 hover:cursor-pointer hover:-translate-y-0.5 w-120">
                       Sign up
                     </div>
 
